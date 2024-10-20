@@ -1,14 +1,14 @@
 # Rust
 
-## Types
+## Types scalaires
 
 ```rust
-// entiers
+// Entiers
 i8, i16, i32, i64, i128, isize
 u8, u16, u32, u64, u128, usize
-// float
+// Floats
 float32, float64
-// Charactaire UTF8 sur 4 bytes
+// Caractère UTF8 sur 4 bytes
 char
 // Boolean
 bool
