@@ -1,3 +1,3 @@
 # Cheatsheets
 
-* [Rust](https://github.com/aminotti/cheatsheet/blob/master/rust.md)
+* [Rust](https://github.com/aminotti/cheatsheet/blob/main/rust.md)
