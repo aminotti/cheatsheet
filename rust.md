@@ -78,8 +78,12 @@ let first = a[0];
 ## Déclarations variable et constantes
 
 ```rust
+// Déclaration variable mutable
+let mut ma_var: i32 = 6; 
 // Déclaration de constante
 const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+// Déclaration variable static mutable
+static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 ```
 
 ## Fonctions
@@ -96,7 +100,56 @@ fn my_function(ma_var: i32) -> i32 {
 
 ## Control Flow
 
-loop {
+```rust
+let my_number = if expression {
+  1
+} else if expression {
+  2
+} else {
+  3
+}
+
+
+// loop
+let result = loop {
+  break 2 + 2;
+};
+
+'counting_up: loop {
+  loop {
+    if expression1 {
+      break; // 2ème loop, pas de label
+    }
+    if expression2 {
+      break 'counting_up; // 1er loop grâce au label
+    }
+  }
+}
+
+
+// While loop
+while expression {
+  break;
+}
+
+
+// For loop
+let a = [10, 20, 30, 40, 50];
+
+// equivaut à a.into_iter() : le contenu du tableau est move ou copy selon le type (ici copy)
+for element in a {
+  println!("the value is: {element}");
+}
+
+// Element du tableau passé par référence
+for element in a.iter() {
+  println!("the value is: {element}");
+}
+
+for (idx, element) in a.iter().enumerate() {
+  println!("the value at index {idx} is: {element}");
+}
+```
 
 ## Structures
 
