@@ -73,15 +73,20 @@ let first = a[0];
 ```
 
 * Slice ??
-* Collections ??
+* Collections (String, Vector, HashMap) ??
 
 ## Déclarations variable et constantes
 
 ```rust
-// Déclaration variable mutable
-let mut ma_var: i32 = 6; 
+// Déclaration variable mutable et de réferences
+let mut ma_var = String::from("hello");
+let ma_ref = &mut ma_var;
+let ref ma_ref_bis = ma_var;
+assert_eq!(*ma_ref, *rma_ref_bis);
+
 // Déclaration de constante
 const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+
 // Déclaration variable static mutable
 static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 ```
@@ -89,12 +94,16 @@ static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 ## Fonctions
 
 ```rust
-fn my_function(ma_var: i32) -> i32 {
+fn my_function(ma_var:  &mut String) -> i32 {
   let ret_var = {
     let x = 3;
     x + 1
   };
-  ret_var + ma_var
+  ret_var
+}
+
+fn ma_func(ref d: char) {
+  // d est une ref mais l'appel à ma_func() se fait sans &
 }
 ```
 
