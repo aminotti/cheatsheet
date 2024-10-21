@@ -1,5 +1,17 @@
 # Rust
 
+* [Cargo](#cargo)
+* [Types scalaires](#types-scalaires)
+* [Types composés](#types-composés)
+* [Déclarations variable et constantes](#déclarations-variable-et-constantes)
+* [Fonctions](#fonctions)
+* [Control Flow](#control-flow)
+* [Structures](#structures)
+* [Enum](#enum)
+* [Iterators](#iterators)
+
+## Cargo
+
 ## Types scalaires
 
 ```rust
@@ -14,10 +26,27 @@ char
 bool
 ```
 
-## Déclaration de fonctions
+## Types composés
+
+* Tuples
+* Array
+* Slice ??
+* Collections ??
+
+## Déclarations variable et constantes
+
+## Fonctions
 
 ```rust
 fn my_function(ma_var: i32) -> i32 {
   ma_var
 }
 ```
+
+## Control Flow
+
+## Structures
+
+## Enum
+
+## Iterators
