@@ -9,6 +9,7 @@
 * [Structures](#structures)
 * [Enum](#enum)
 * [Iterators](#iterators)
+* [Librairie standard](#librairie-standard)
 
 ## Cargo
 
@@ -39,35 +40,72 @@ cargo check
 // Entiers
 i8, i16, i32, i64, i128, isize
 u8, u16, u32, u64, u128, usize
+// Entier literal
+98_222, 38_000_u16, 0xff, 0o77 (octal), 0b1111_0000, b'A' (byte)
 // Floats
 float32, float64
+// Floats literal
+0.01_f64, 1_000.000_1_f32
 // Caractère UTF8 sur 4 bytes
 char
 // Boolean
 bool
+
+// Convertion d'un type
+let v = 38_000_u16 as i64
+// Taille maximum d'un type
+u64::MAX
 ```
 
 ## Types composés
 
-* Tuples
-* Array
+```rust
+// Tuples
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+let (x, y, z) = tup;
+let x = tup.0;
+
+// Array
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+let a = [1, 2, 3, 4, 5];
+let a = [3; 5];
+let first = a[0];
+```
+
 * Slice ??
 * Collections ??
 
 ## Déclarations variable et constantes
 
+```rust
+// Déclaration de constante
+const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+```
+
 ## Fonctions
 
 ```rust
 fn my_function(ma_var: i32) -> i32 {
-  ma_var
+  let ret_var = {
+    let x = 3;
+    x + 1
+  };
+  ret_var + ma_var
 }
 ```
 
 ## Control Flow
+
+loop {
 
 ## Structures
 
 ## Enum
 
 ## Iterators
+
+## Librairie standard
+
+  println!("5 in binary is {:08b}", 5); // Ecrit 5 en binaire sur 8bits : 00000101
+  println!("12 in hexa is {:x}", 12); // Ecrit 12 en hexadecimal : C
+  println!("Guess the number!");
