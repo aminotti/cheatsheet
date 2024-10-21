@@ -12,6 +12,27 @@
 
 ## Cargo
 
+```bash
+# Update rust
+rustup update
+# Remove rust
+rustup self uninstall
+
+# Compile & run simple file
+rustc main.rs
+
+# Create project
+cargo new [--lib] projectName
+# Create project from existing directory
+cargo init [--lib]
+# Build
+cargo build [--release]
+# Compile and run Cargo project
+cargo run
+# Check compilation sans build (plus rapide au cours du dev)
+cargo check
+```
+
 ## Types scalaires
 
 ```rust
