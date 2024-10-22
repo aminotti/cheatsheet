@@ -56,8 +56,8 @@ char
 // Boolean
 bool
 
-// Convertion d'un type
-let v = 38_000_u16 as i64
+// type casting
+let v = 38_000_u16 as i64;
 // Taille maximum d'un type
 u64::MAX
 ```
