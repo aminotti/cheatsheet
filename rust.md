@@ -4,12 +4,14 @@
 * [Types scalaires](#types-scalaires)
 * [Types composés](#types-composés)
 * [Déclarations variable et constantes](#déclarations-variable-et-constantes)
+* [Opérateurs binaires](#opérateurs-binaires)
 * [Fonctions](#fonctions)
 * [Control Flow](#control-flow)
 * [Structures](#structures)
 * [Enum](#enum)
 * [Iterators](#iterators)
 * [Librairie standard](#librairie-standard)
+  * [Printing and formating](#printing-and-formating)
 
 ## Cargo
 
@@ -30,7 +32,7 @@ cargo init [--lib]
 cargo build [--release]
 # Compile and run Cargo project
 cargo run
-# Check compilation sans build (plus rapide au cours du dev)
+# Check compilation sans build (plus rapide)
 cargo check
 ```
 
@@ -41,13 +43,16 @@ cargo check
 i8, i16, i32, i64, i128, isize
 u8, u16, u32, u64, u128, usize
 // Entier literal
-98_222, 38_000_u16, 0xff, 0o77 (octal), 0b1111_0000, b'A' (byte)
+98_222, 38_000_u16, 0xff, 0o77 (octal)
+0b1111_0000, b'A' (u8)
 // Floats
 float32, float64
 // Floats literal
 0.01_f64, 1_000.000_1_f32
 // Caractère UTF8 sur 4 bytes
 char
+// char literal
+'e', '\n', '\u{1f600}'
 // Boolean
 bool
 
@@ -78,23 +83,34 @@ let first = a[0];
 ## Déclarations variable et constantes
 
 ```rust
-// Déclaration variable mutable et de réferences
+// Déclarations variable
 let mut ma_var = String::from("hello");
 let ma_ref = &mut ma_var;
 let ref ma_ref_bis = ma_var;
 assert_eq!(*ma_ref, *rma_ref_bis);
 
 // Déclaration de constante
-const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+const THREE_HOURS_IN_MINUTES: u32 = 3 * 60;
 
 // Déclaration variable static mutable
 static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
+```
+## Opérateurs binaires
+
+```rust
+let (g, h) = (0x1, 0x2);
+
+let bitwise_and = g & h;  // => 0
+let bitwise_or = g | h;   // => 3
+let bitwise_xor = g ^ h;  // => 3
+let right_shift = g >> 2; // => 0
+let left_shift = h << 4;  // => 32
 ```
 
 ## Fonctions
 
 ```rust
-fn my_function(ma_var:  &mut String) -> i32 {
+fn my_func(ma_var:  &mut String) -> i32 {
   let ret_var = {
     let x = 3;
     x + 1
@@ -103,7 +119,8 @@ fn my_function(ma_var:  &mut String) -> i32 {
 }
 
 fn ma_func(ref d: char) {
-  // d est une ref mais l'appel à ma_func() se fait sans &
+  // d est une ref,
+  // mais l'appel à ma_func() se fait sans &
 }
 ```
 
@@ -130,7 +147,7 @@ let result = loop {
       break; // 2ème loop, pas de label
     }
     if expression2 {
-      break 'counting_up; // 1er loop grâce au label
+      break 'counting_up; // 1er loop label
     }
   }
 }
@@ -145,7 +162,8 @@ while expression {
 // For loop
 let a = [10, 20, 30, 40, 50];
 
-// equivaut à a.into_iter() : le contenu du tableau est move ou copy selon le type (ici copy)
+// equivaut à a.into_iter()
+// item sont move ou copy selon le type
 for element in a {
   println!("the value is: {element}");
 }
@@ -156,7 +174,7 @@ for element in a.iter() {
 }
 
 for (idx, element) in a.iter().enumerate() {
-  println!("the value at index {idx} is: {element}");
+  println!("{element} at index {idx}.");
 }
 ```
 
@@ -168,6 +186,14 @@ for (idx, element) in a.iter().enumerate() {
 
 ## Librairie standard
 
-  println!("5 in binary is {:08b}", 5); // Ecrit 5 en binaire sur 8bits : 00000101
-  println!("12 in hexa is {:x}", 12); // Ecrit 12 en hexadecimal : C
-  println!("Guess the number!");
+### Printing and formating
+
+```rust
+println!("{country}", country = "France");
+println!("{} {}", 1, 3);
+println!("{0} {1} {0}", "Rust", "is");
+println!("binary {:08b}, octal {:o}, hexa {:x}",5, 5, 5);
+println!("{:?}", ma_struct); // debug
+println!("{:#?}", ma_struct); // pretty debug
+eprintln!("This is an error\n"); // stderr
+```
