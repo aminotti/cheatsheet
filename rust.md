@@ -196,4 +196,5 @@ println!("binary {:08b}, octal {:o}, hexa {:x}",5, 5, 5);
 println!("{:?}", ma_struct); // debug
 println!("{:#?}", ma_struct); // pretty debug
 eprintln!("This is an error\n"); // stderr
+dbg!()
 ```
