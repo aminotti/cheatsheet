@@ -95,7 +95,7 @@ let fullstring : &str = s.as_str();
 // data stocké dans binaire
 let s = "Hello, world!";
 
-// arg peut être de type String ou string literal
+// arg accept String ou string literal
 fun ma_fc(arg: &str) {}
 
 let a = [1, 2, 3, 4, 5];
