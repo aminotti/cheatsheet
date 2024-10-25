@@ -205,6 +205,7 @@ impl User {
     Self {
       active,
       username,
+      age: 19,
       sign_in_count: 1,
     }
 
