@@ -245,6 +245,23 @@ impl Message {
 
 let m = Message::Write(String::from("hello"));
 m.call();
+
+enum IpAddrKind {
+    V4 = 0,
+    V6, // Ici V6 vaut 1
+}
+
+// enum converti en int using as u8
+assert_eq!(IpAddrKind::V4 as u8, 0);
+assert_eq!(IpAddrKind::V6 as u8, 1);
+
+// Generics
+enum Option<T> {
+  None,
+  Some(T),
+}
+let some_char = Some('e');
+let absent_number: Option<i32> = None;
 ```
 
 ## Iterators
