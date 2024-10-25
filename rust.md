@@ -78,7 +78,31 @@ let a = [3; 5];
 let first = a[0];
 ```
 
-* Slice ??
+## Slices
+
+* pointeur et longeur stoqués dans **stack**
+
+```rust
+let s = String::from("hello new world");
+let hello : &str = &s[..5]; // hello
+let new : &str = &s[6..9]; // new
+let world : &str = &s[10..]; // world
+let fullstring : &str = &s[..];
+let fullstring : &str = &s;
+let fullstring : &str = s.as_str();
+
+// String literals
+// data stocké dans binaire
+let s = "Hello, world!";
+
+// arg peut être de type String ou string literal
+fun ma_fc(arg: &str) {}
+
+let a = [1, 2, 3, 4, 5];
+let slice : &[i32] = &a[1..3];
+assert_eq!(slice, &[2, 3]);
+```
+
 * Collections (String, Vector, HashMap) ??
 
 ## Déclarations variable et constantes
