@@ -212,18 +212,18 @@ impl User {
   }
 
   // $mut self si on voulais modifié age
-  // self si on veut transformer en autre chose
-  // et rendre l'original invalid pour le caller
+  // self si on transforme en autre chose
+  // et invalid l'original pour le caller
   fn majeur(&self) -> bool {
     self.age => 18
   }
 }
 
-let user1 = User::new_user(String::from("j.martin"));
+let u1 = User::new_user(String::from("joe"));
 
-let user2 = User {
+let u2 = User {
   email: String::from("martin@domain.tld"),
-  ..user1  // user1 plus utilisable : username moved
+  ..u1 // u1 plus utilisable due to username
 };
 ```
 
