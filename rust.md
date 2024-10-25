@@ -211,6 +211,9 @@ impl User {
 
   }
 
+  // $mut self si on voulais modifié age
+  // self si on veut transformer en autre chose
+  // et rendre l'original invalid pour le caller
   fn majeur(&self) -> bool {
     self.age => 18
   }
