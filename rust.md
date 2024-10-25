@@ -231,10 +231,10 @@ let u2 = User {
 
 ```rust
 enum Message {
-  Quit, // no data associated with it at al
-  Move { x: i32, y: i32 },  // named fields, like a struct
-  Write(String),  // includes a single String
-  ChangeColor(i32, i32, i32),  // includes three i32 values
+  Quit,
+  Move { x: i32, y: i32 },
+  Write(String),
+  ChangeColor(i32, i32, i32),
 }
 
 impl Message {
@@ -267,6 +267,69 @@ let absent_number: Option<i32> = None;
 ## Iterators
 
 ## Match
+
+```rust
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+}
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+let c = Coin::Quarter(UsState::Alaska);
+match c {
+  Coin::Penny => 1,
+  Coin::Nickel => 5,
+  Coin::Dime => 10,
+  Coin::Quarter(state) => {
+    println!("{:?}!", state);
+    25
+  }
+}
+
+// Macthing with Option<T>
+fn plus_one() -> Option<i32> {
+  let x = Some(5);
+  match x {
+    None => None,
+    Some(i) => Some(i + 1),
+  }
+}
+
+// Catch-all pattern
+let dice_roll = 9;
+match dice_roll {
+  3 => add_fancy_hat(),
+  7 => remove_fancy_hat(),
+  // Catch all, doit être en dernier
+  o => move_player(o),
+}
+// Catch-all sans utiliser la value : _
+match dice_roll {
+  3 => add_fancy_hat(),
+  7 => remove_fancy_hat(),
+  _ => (), // Ne fait rien
+}
+
+// Equivalant de match : if let
+let mut count = 0;
+match coin {
+  Coin::Quarter(s) => println!("{:?}!", s),
+  _ => count += 1,
+}
+// Pareil que
+let mut count = 0;
+if let Coin::Quarter(s) = coin {
+  println!("{:?}!", s),
+} else {
+  count += 1;
+}
+```
 
 ## Librairie standard
 
