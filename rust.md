@@ -10,6 +10,7 @@
 * [Structures](#structures)
 * [Enum](#enum)
 * [Iterators](#iterators)
+* [Match](#match)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
 
@@ -180,9 +181,71 @@ for (idx, element) in a.iter().enumerate() {
 
 ## Structures
 
+```rust
+// Unit-Like Structs
+struct AlwaysEqual;
+let subject = AlwaysEqual;
+
+// Tuple struct
+struct Color(i32, i32, i32);
+let (a, b, c) = Color(0, 0, 0)
+
+#[derive(Debug)]
+struct User {
+  active: bool,
+  username: String,
+  age: u8,
+  sign_in_count: u64,
+}
+
+impl User {
+  fn new_user(username: String) -> Self {
+    active: true;
+
+    Self {
+      active,
+      username,
+      sign_in_count: 1,
+    }
+
+  }
+
+  fn majeur(&self) -> bool {
+    self.age => 18
+  }
+}
+
+let user1 = User::new_user(String::from("j.martin"));
+
+let user2 = User {
+  email: String::from("martin@domain.tld"),
+  ..user1  // user1 plus utilisable : username moved
+};
+```
+
 ## Enum
 
+```rust
+enum Message {
+  Quit, // no data associated with it at al
+  Move { x: i32, y: i32 },  // named fields, like a struct
+  Write(String),  // includes a single String
+  ChangeColor(i32, i32, i32),  // includes three i32 values
+}
+
+impl Message {
+  fn call(&self) {
+    // method body would be defined here
+  }
+}
+
+let m = Message::Write(String::from("hello"));
+m.call();
+```
+
 ## Iterators
+
+## Match
 
 ## Librairie standard
 
