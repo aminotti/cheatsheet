@@ -2,7 +2,7 @@
 
 * [Cargo](#cargo)
 * [Types scalaires](#types-scalaires)
-* [Types composés](#types-composés)
+* [Types composés & collections](#types-composés-&-collections)
 * [Déclarations variable et constantes](#déclarations-variable-et-constantes)
 * [Opérateurs binaires](#opérateurs-binaires)
 * [Fonctions](#fonctions)
@@ -64,7 +64,7 @@ let v = 38_000_u16 as i64;
 u64::MAX
 ```
 
-## Types composés
+## Types composés & collections
 
 ```rust
 // Tuples
@@ -79,7 +79,7 @@ let a = [3; 5];
 let first = a[0];
 ```
 
-## Slices
+### Slices
 
 * pointeur et longeur stoqués dans **stack**
 
@@ -104,7 +104,45 @@ let slice : &[i32] = &a[1..3];
 assert_eq!(slice, &[2, 3]);
 ```
 
-* Collections (String, Vector, HashMap) ??
+### Vector
+
+```rust
+let v1: Vec<i32> = vec![1, 2, 3];
+let mut v2 = Vec::new();
+v2.push(5);
+
+// Acces par index
+/// Panic si pas de 3ème élément
+let third: &i32 = &v1[2];
+// Acces plus safe
+let third: Option<&i32> = v1.get(2);
+match third {
+  Some(third) => println!("{third}"),
+  None => println!("404"),
+}
+
+// Iterating over the Values
+for i in &v1 {
+  println!("{i}");
+}
+// Equivaut à
+for i in v1.iter() {
+  println!("{i}");
+}
+// Effectur un move (prend ownership)
+for i in v1.into_iter() {
+  println!("{i}");
+}
+
+// Modif element du vecteur
+for i in &mut v2 {
+  *i += 50;
+}
+```
+
+### String
+
+### HashMap
 
 ## Déclarations variable et constantes
 
