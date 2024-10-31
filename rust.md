@@ -2,9 +2,9 @@
 
 * [Cargo](#cargo)
 * [Types scalaires](#types-scalaires)
-* [Types composés & collections](#types-composés-&-collections)
-* [Déclarations variable et constantes](#déclarations-variable-et-constantes)
-* [Opérateurs binaires](#opérateurs-binaires)
+* [Types composés et collections](#types-composes-et-collections)
+* [Déclarations variable et constantes](#declarations-variable-et-constantes)
+* [Opérateurs binaires](#operateurs-binaires)
 * [Fonctions](#fonctions)
 * [Control Flow](#control-flow)
 * [Structures](#structures)
@@ -64,7 +64,7 @@ let v = 38_000_u16 as i64;
 u64::MAX
 ```
 
-## Types composés & collections
+## Types composes et collections
 
 ```rust
 // Tuples
@@ -166,25 +166,25 @@ for b in "Зд".bytes() {
 // String literals
 let byte_escape = "I'm writing Ru\x73__!";
 let unicode_codepoint = "\u{211D}";
-let raw_str = r"Escapes don't work here: \x3F \u{211D}";
+let raw_str = r"No Escapes \x3F \u{211D}";
 // # si besion de " dans la string
-let quotes = r#"And then I said: "There is no escape!""#;
+let quotes = r#"I said: Hello!""#;
 // Si # dans string ajouter plus de #
-let delimiter = r###"A string with "# in it. And even "##!"###;
+let delimiter = r###"String with "##" "###;
 let long_string = "String literals
     can span multiple lines.
     The linebreak and indentation here \
     can be escaped too!";
 
 // ASCII (&str et String sont UTF8)
-let bytestring: &[u8; 21] = b"this is a byte string";
+let bytestring: &[u8; 21] = b"A byte string";
 let escaped = b"\x52\x75\x73\x74 as bytes";
-let raw_bytestring = br"\u{211D} is not escaped here";
+let raw_bytestring = br"\u{211D} no escape";
 ```
 
 ### HashMap
 
-## Déclarations variable et constantes
+## Declarations variable et constantes
 
 ```rust
 // Déclarations variable
@@ -199,7 +199,7 @@ const THREE_HOURS_IN_MINUTES: u32 = 3 * 60;
 // Déclaration variable static mutable
 static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 ```
-## Opérateurs binaires
+## Operateurs binaires
 
 ```rust
 let (g, h) = (0x1, 0x2);
@@ -434,7 +434,7 @@ if let Coin::Quarter(s) = coin {
 }
 ```
 
-## Modules]
+## Modules
 
 Import
 
