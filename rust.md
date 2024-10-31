@@ -14,6 +14,7 @@
 * [Modules](#modules)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
+  * [Erreurs](#erreurs)
 
 ## Cargo
 
@@ -517,4 +518,32 @@ eprintln!("This is an error\n"); // stderr
 format!("{}", var);
 
 dbg!()
+
+panic!();
+```
+
+### Erreurs
+
+```rust
+Result<T, E>.unwrap_or_else(||);
+Result<T, E>.unwrap(); // panic
+Result<T, E>.expect(""); // panic
+// Operator ? sur types qui implement FromResidual
+Result<T, E>?
+
+// OurError implement From<io::Error>
+fn get_u() -> Result<String, OurError> {
+  // Error type io::Error
+  let mut f = File::open("hello.txt")?; 
+  let mut u = String::new();
+  // Error type io::Error
+  f.read_to_string(&mut u)?;
+  Ok(u)
+}
+
+// Box<dyn Error> any type of error
+fn main() -> Result<(), Box<dyn Error>> {
+  let greeting_file = File::open("hello.txt")?;
+  Ok(())
+}
 ```
