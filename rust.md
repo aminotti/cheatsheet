@@ -528,7 +528,7 @@ panic!();
 Result<T, E>.unwrap_or_else(||);
 Result<T, E>.unwrap(); // panic
 Result<T, E>.expect(""); // panic
-// Operator ? sur types qui implement FromResidual
+// ? sur types qui impl FromResidual
 Result<T, E>?
 
 // OurError implement From<io::Error>
@@ -543,7 +543,7 @@ fn get_u() -> Result<String, OurError> {
 
 // Box<dyn Error> any type of error
 fn main() -> Result<(), Box<dyn Error>> {
-  let greeting_file = File::open("hello.txt")?;
+  let f = File::open("hello.txt")?;
   Ok(())
 }
 ```
