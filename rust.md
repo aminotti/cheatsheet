@@ -11,6 +11,7 @@
 * [Enum](#enum)
 * [Iterators](#iterators)
 * [Match](#match)
+* [Modules](#modules)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
 
@@ -354,6 +355,50 @@ if let Coin::Quarter(s) = coin {
   count += 1;
 }
 ```
+
+## Modules]
+
+Import
+
+*fonction prefixé par nom du module dans le code*
+
+```rust
+use crate::my_module::*;
+use std::{cmp::Ordering, io};
+// import io et write
+use std::io::{self, Write};
+```
+
+Definition
+
+```rust
+// src/lib.rs
+mode my_module;
+
+
+// src/my_module.rs
+// src/my_module/mod.rs
+mode sub_module;
+// Code du module
+
+
+// src/my_module/sub_module.rs
+// src/my_module/sub_module/mod.rs
+// Code submodule
+```
+
+Ou Definition inline
+
+```rust
+// src/lib.rs
+mode my_module {
+  mode sub_module {
+    // Code submodule
+  }
+  // Code du module
+}
+```
+
 
 ## Librairie standard
 
