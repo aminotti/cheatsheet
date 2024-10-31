@@ -142,6 +142,46 @@ for i in &mut v2 {
 
 ### String
 
+```rust
+let mut s1 = String::new();
+let s2 = "initial contents".to_string();
+let s3 = String::from("initial contents");
+
+// Updating a String
+s1.push_str("Hell");
+s1.push('o');
+
+// s1 is moved and can no longer be used
+let s = s1 + "-" + &s2 + "-" + &s3;
+
+// Iteration sur une chaîne
+for c in "Зд".chars() {
+  println!("{c}"); // affiche З puis д
+}
+// affiche 208 puis 151 puis 208 puis 180
+for b in "Зд".bytes() {
+    println!("{b}");
+}
+
+// String literals
+let byte_escape = "I'm writing Ru\x73__!";
+let unicode_codepoint = "\u{211D}";
+let raw_str = r"Escapes don't work here: \x3F \u{211D}";
+// # si besion de " dans la string
+let quotes = r#"And then I said: "There is no escape!""#;
+// Si # dans string ajouter plus de #
+let delimiter = r###"A string with "# in it. And even "##!"###;
+let long_string = "String literals
+    can span multiple lines.
+    The linebreak and indentation here \
+    can be escaped too!";
+
+// ASCII (&str et String sont UTF8)
+let bytestring: &[u8; 21] = b"this is a byte string";
+let escaped = b"\x52\x75\x73\x74 as bytes";
+let raw_bytestring = br"\u{211D} is not escaped here";
+```
+
 ### HashMap
 
 ## Déclarations variable et constantes
