@@ -184,6 +184,28 @@ let raw_bytestring = br"\u{211D} no escape";
 
 ### HashMap
 
+```rust
+use std::collections::HashMap;
+
+let mut s = HashMap::new();
+s.insert(String::from("Blue"), 10);
+let key = String::from("Blue");
+// copied() renvoi un Option<i32>
+// au lieu de Option<&i32>
+let v = s.get(&key).copied().unwrap_or(0);
+
+//Itération
+for (key, value) in &s {
+  println!("{key}: {value}");
+}
+
+// Insert si clé existe pas
+// crée red avec valeur 45
+s.entry(String::from("red")).or_insert(45);
+// Blue existe, ne change pas sa valeur
+s.entry(String::from("Blue")).or_insert(50);
+```
+
 ## Declarations variable et constantes
 
 ```rust
