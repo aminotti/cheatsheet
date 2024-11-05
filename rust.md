@@ -356,20 +356,20 @@ let u2 = User {
 ## Enum
 
 ```rust
-enum Message {
+enum MyMsg {
   Quit,
   Move { x: i32, y: i32 },
   Write(String),
   ChangeColor(i32, i32, i32),
 }
 
-impl Message {
+impl MyMsg {
   fn call(&self) {
     // method body would be defined here
   }
 }
 
-let m = Message::Write(String::from("hello"));
+let m = MyMsg::Write(String::from("hello"));
 m.call();
 
 enum IpAddrKind {
@@ -464,6 +464,7 @@ Import
 *fonction prefixé par nom du module dans le code*
 
 ```rust
+use std::io::Result as IoResult;
 use crate::my_module::*;
 use std::{cmp::Ordering, io};
 // import io et write
@@ -479,6 +480,7 @@ mode my_module;
 
 // src/my_module.rs
 // src/my_module/mod.rs
+// mod.r : old style, deprecated
 mode sub_module;
 // Code du module
 
@@ -493,7 +495,7 @@ Ou Definition inline
 ```rust
 // src/lib.rs
 mode my_module {
-  mode sub_module {
+  pub mode sub_module {
     // Code submodule
   }
   // Code du module
