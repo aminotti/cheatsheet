@@ -159,7 +159,9 @@ let s2 = "initial contents".to_string();
 let s3 = String::from("initial contents");
 
 // Updating a String
-s1.push_str("Hell");
+let s = "Hell";
+// Prend pas ownership, &str transmis
+s1.push_str(s);
 s1.push('o');
 
 // s1 is moved and can no longer be used
