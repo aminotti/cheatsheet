@@ -3,6 +3,10 @@
 * [Cargo](#cargo)
 * [Types scalaires](#types-scalaires)
 * [Types composés et collections](#types-composes-et-collections)
+  * [Slices](slices)
+  * [Vector](vector)
+  * [String](string)
+  * [HashMap](hashmap)
 * [Déclarations variable et constantes](#declarations-variable-et-constantes)
 * [Opérateurs binaires](#operateurs-binaires)
 * [Fonctions](#fonctions)
@@ -108,6 +112,7 @@ assert_eq!(slice, &[2, 3]);
 ### Vector
 
 ```rust
+// Valeurs en memoire next to each other
 let v1: Vec<i32> = vec![1, 2, 3];
 let mut v2 = Vec::new();
 v2.push(5);
