@@ -235,6 +235,9 @@ const THREE_HOURS_IN_MINUTES: u32 = 3 * 60;
 
 // Déclaration variable static mutable
 static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
+
+// Raw identifiers to use reserved keywords
+let r#match = "tennis"
 ```
 ## Operateurs binaires
 
