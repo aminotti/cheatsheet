@@ -87,6 +87,8 @@ let first = a[0];
 ### Slices
 
 * pointeur et longeur stoqués dans **stack**
+* Litteral string == string slice
+* String slice : core language
 
 ```rust
 let s = String::from("hello new world");
@@ -147,6 +149,9 @@ for i in &mut v2 {
 ```
 
 ### String
+
+* standart library
+* wrapper de vecteur de bytes
 
 ```rust
 let mut s1 = String::new();
