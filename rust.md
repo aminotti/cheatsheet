@@ -213,8 +213,10 @@ for (key, value) in &s {
 }
 
 // Insert si clé existe pas
+// entry() returns Enum Entry
 // crée red avec valeur 45
 s.entry(String::from("red")).or_insert(45);
+// or_insert returns a mutable reference
 // Blue existe, ne change pas sa valeur
 s.entry(String::from("Blue")).or_insert(50);
 ```
