@@ -17,6 +17,7 @@
 * [Match](#match)
 * [Modules](#modules)
 * [Generic types](#generic-types)
+* [Traits](#traits)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
   * [Erreurs](#erreurs)
@@ -540,6 +541,45 @@ impl Pt<f32, f32> {
   ...
  }
 }
+```
+
+## Traits
+
+```rust
+pub trait Summary {
+ fn summarize_author(&self) -> String;
+ // Default implementation
+ fn summarize(&self) -> String {
+  return self.summarize_author() 
+ }
+}
+
+struct Tweet {}
+
+impl Summary for Tweet {
+ fn summarize(&self) -> String {
+  format!("{}", self.content)
+ }
+}
+
+
+// MyTrait a des implementations par defaut
+impl MyTrait for Tweet {}
+
+
+// Trait dans les appels de fonctions
+fn notify(item: &(impl Summary + Display)) {}
+fn notify<T: Summary + Display>(item: &T) {}
+
+fn some_function<T, U>(t: &T, u: &U) -> i32
+where
+ T: Display + Clone,
+ U: Clone + Debug,
+{
+}
+
+// 1 seul type concret peut etre renvoyé
+fn summarizable(switch: bool) -> impl Month {}
 ```
 
 ## Librairie standard
