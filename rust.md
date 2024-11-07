@@ -240,6 +240,12 @@ static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 
 // Raw identifiers to use reserved keywords
 let r#match = "tennis"
+
+// Lifetime
+// a reference with an explicit lifetime
+&'a i32
+// a mutable reference with an explicit lifetime
+&'a mut i32
 ```
 ## Operateurs binaires
 
