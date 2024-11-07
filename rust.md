@@ -16,6 +16,7 @@
 * [Iterators](#iterators)
 * [Match](#match)
 * [Modules](#modules)
+* [Generic types](#generic-types)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
   * [Erreurs](#erreurs)
@@ -519,6 +520,27 @@ mode my_module {
 }
 ```
 
+## Generic types
+
+```rust
+struct Pt<X1, Y1> {
+ x: X1,
+ y: Y1,
+}
+
+impl<X1, Y1> Pt<X1, Y1> {
+ fn mixup<X2, Y2>(self, other: Pt<X2, Y2>) -> Pt<X1, Y2> {
+  ...
+ }
+}
+
+// Implement que pour un type concret
+impl Pt<f32, f32> {
+ fn distance_from_origin(&self) -> f32 {
+  ...
+ }
+}
+```
 
 ## Librairie standard
 
