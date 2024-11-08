@@ -21,6 +21,7 @@
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
   * [Erreurs](#erreurs)
+* [Tests](#tests)
 
 ## Cargo
 
@@ -638,5 +639,94 @@ fn get_u() -> Result<String, OurError> {
 fn main() -> Result<(), Box<dyn Error>> {
   let f = File::open("hello.txt")?;
   Ok(())
+}
+```
+
+## Tests
+
+### Tests unitaires
+
+* Dans fichier où sont les fonctions à tester
+* ``cargo test <func_name>``
+* ``cargo test <prefix_func>``
+* ``cargo test -- --ignored``
+* ``cargo test -- --include-ignored``
+* ``cargo test -- --show-output``
+
+```rust
+#[cfg(test)]
+mod tests {
+  // access outer module
+  use super::*;
+
+  #[test] 
+  fn it_adds_two() {
+    assert_eq!(4, add_two(2), "msg");
+    assert_ne!(3, add_two(3));
+  }
+
+  #[test]
+  fn another() {
+    assert!(func2Test(&arg), "{}", arg);
+    assert!(!func2Test(&arg)); 
+    panic!("Make this test fail");
+  }
+
+  #[test]
+  #[should_panic]
+  fn greater_than_100() {
+    panic!("Make this test pass");
+  }
+
+  #[test]
+  #[should_panic(expected = "custom msg")]
+  fn greater_than_100() {
+    panic!("custom msg");
+  }
+
+  // Using Result<T, E>
+  #[ignore] // test ignoré
+  #[test]
+  fn fc_t() -> Result<(), String> {
+    if 2 + 2 == 4 {
+      Ok(())  // Test pass
+    } else {
+      Err(String::from("error messager"))
+    }
+  }
+}
+```
+
+## Tests d'intégration
+
+* Sur fonctions publiques definies dans ``src/lib.rs``
+* ``cargo test --test integration_test``
+
+```bash
+.
+├── src/
+│   └── lib.rs
+└── tests/
+    ├── common.rs
+    └── my_crate_test.rs
+```
+
+```rust
+// common.rs
+pub fn setup() {
+  // setup code
+}
+```
+
+```rust
+// my_crate_testt.rs
+use adder;
+
+mod common;
+
+#[test]
+fn it_adds_two() {
+  common::setup();
+  assert_eq!(4, adder::add_two(2));
 }
 ```
