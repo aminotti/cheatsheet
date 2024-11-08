@@ -618,6 +618,12 @@ Result<T, E>.expect(""); // panic
 // ? sur types qui impl FromResidual
 Result<T, E>?
 
+// Using match
+let file = match file_result {
+  Ok(file) => file,
+  Err(e) => panic!("Error : {:?}", e);
+};
+
 // OurError implement From<io::Error>
 fn get_u() -> Result<String, OurError> {
   // Error type io::Error
