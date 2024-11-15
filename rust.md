@@ -647,6 +647,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 ### Tests unitaires
 
 * Dans fichier où sont les fonctions à tester
+* ``cargo test <module_name>::``
 * ``cargo test <func_name>``
 * ``cargo test <prefix_func>``
 * ``cargo test -- --ignored``
