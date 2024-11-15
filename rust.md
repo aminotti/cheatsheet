@@ -635,7 +635,8 @@ fn get_u() -> Result<String, OurError> {
   Ok(u)
 }
 
-// Box<dyn Error> any type of error
+// Box<dyn Error> any type qui implement
+// le trait std::error::Error
 fn main() -> Result<(), Box<dyn Error>> {
   let f = File::open("hello.txt")?;
   Ok(())
