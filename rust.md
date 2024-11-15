@@ -591,6 +591,17 @@ fn summarizable(switch: bool) -> impl Month {}
 
 ## Librairie standard
 
+```rust
+// Variable d'env boolean
+std::env::var("MA_VAR_BOOL").is_ok();
+ 
+// params CLI
+std::env::args().collect();
+
+// Quit avec code erreur 1
+std::process::exit(1);
+```
+
 ### Printing and formating
 
 ```rust
