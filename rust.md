@@ -423,6 +423,17 @@ let absent_number: Option<i32> = None;
 let add_one_v1 = |x: u32| -> u32 { x + 1 };
 let add_one_v2 = |x|             { x + 1 };
 let add_one_v3 = |x|               x + 1  ;
+
+let mut list = vec![1, 2, 3];
+let mut borrows_mutably = || list.push(7);
+// mutable borrow de list
+// list pas utilisable avant appel closure
+borrows_mutably();
+
+// closure prend ownership sur list avec move
+let closure = move || {
+ println!("From thread: {:?}", list));
+};
 ```
 
 ## Iterators
