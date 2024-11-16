@@ -13,6 +13,7 @@
 * [Control Flow](#control-flow)
 * [Structures](#structures)
 * [Enum](#enum)
+* [Closures](#closures)
 * [Iterators](#iterators)
 * [Match](#match)
 * [Modules](#modules)
@@ -414,6 +415,14 @@ enum Option<T> {
 }
 let some_char = Some('e');
 let absent_number: Option<i32> = None;
+```
+
+## Closures
+
+```rust
+let add_one_v1 = |x: u32| -> u32 { x + 1 };
+let add_one_v2 = |x|             { x + 1 };
+let add_one_v3 = |x|               x + 1  ;
 ```
 
 ## Iterators
