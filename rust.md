@@ -42,7 +42,7 @@ cargo init [--lib]
 # Build
 cargo build [--release]
 # Compile and run Cargo project
-cargo run
+cargo run [-- arg1 arg2  arg3]
 # Check compilation sans build (plus rapide)
 cargo check
 ```
