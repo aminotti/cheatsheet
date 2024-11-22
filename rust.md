@@ -438,6 +438,34 @@ let closure = move || {
 
 ## Iterators
 
+```rust
+// Iterator implément trait iterator
+pub trait Iterator {
+  type Item;
+
+ // Renvoi None quand plus de valeur
+  fn next(&mut self) -> Option<Self::Item>;
+}
+```
+
+```rust
+let v = vec![1, 2, 3];
+// Création iterator
+// iter() borrow v
+let my_iter = v.iter();
+// into_iter() prend ownership
+let my_iter = v.into_iter();
+
+// Adapter renvoi iterator
+my_iter.map(|x| x + 1);
+my_iter.filter(|s| s.size == 32)
+
+// Consumer
+my_iter.sum();
+my_iter.collect();
+```
+* Adapter & consumer take ownsership of iterartor
+
 ## Match
 
 ```rust
