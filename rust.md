@@ -23,6 +23,7 @@
   * [Printing and formating](#printing-and-formating)
   * [Erreurs](#erreurs)
 * [Tests](#tests)
+* [Documentation](#documentation)
 
 ## Cargo
 
@@ -45,6 +46,36 @@ cargo build [--release]
 cargo run [-- arg1 arg2  arg3]
 # Check compilation sans build (plus rapide)
 cargo check
+# Generation de la doc
+cargo doc [--open]
+# Ajout dependance BINAIRE
+`cargo install <packagename>
+```
+### Cargo.toml
+
+```bash
+# Cargo.toml
+[profile.dev]
+opt-level = 0 #  min optimisation
+
+[profile.release]
+opt-level = 3 # max optimisation
+```
+
+###  crates.io
+
+1. Login avec github
+2. Création d'un token https://crates.io/me
+3. ``cargo login <token>``
+4. Add ID licence https://spdx.org/licenses
+5. Ajouter Description
+6. ``cargo publish``
+
+```bash
+# Rendre version obsolète
+cargo yank --vers 1.0.1
+# Annuler
+cargo yank --vers 1.0.1 --undo
 ```
 
 ## Types scalaires
@@ -758,7 +789,7 @@ mod tests {
 }
 ```
 
-## Tests d'intégration
+### Tests d'intégration
 
 * Sur fonctions publiques definies dans ``src/lib.rs``
 * ``cargo test --test integration_test``
@@ -789,5 +820,28 @@ mod common;
 fn it_adds_two() {
   common::setup();
   assert_eq!(4, adder::add_two(2));
+}
+```
+
+## Documentation
+
+```rust
+//! # My Crate
+//!
+//! `my_crate` is a collection of utilities to make performing certain
+//! calculations more convenient.
+
+/// Adds one to the number given.
+///
+/// # Examples
+///
+/// ```
+/// let arg = 5;
+/// let answer = my_crate::add_one(arg);
+///
+/// assert_eq!(6, answer);
+/// ```
+pub fn add_one(x: i32) -> i32 {
+    x + 1
 }
 ```
