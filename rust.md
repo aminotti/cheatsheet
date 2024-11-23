@@ -62,6 +62,37 @@ opt-level = 0 #  min optimisation
 opt-level = 3 # max optimisation
 ```
 
+### Workspace
+
+* Permet de regroupper les packages avec lock global
+
+```bash
+mkdir my_workspace && cd my_workspace
+cargo new adder
+cargo new add_one --lib
+
+# Créer Cargo.toml à la racine du workspace
+[workspace]
+
+members = [
+    "adder",
+    "add_one",
+]
+
+
+# adder/Cargo.toml
+[dependencies]
+add_one = { path = "../add_one" }
+
+cd my_workspace
+# Build entire workspace
+cargo build
+# Run package adder
+cargo run -p adder
+# ou
+cd adder && cargo run
+```
+
 ###  crates.io
 
 1. Login avec github
@@ -70,6 +101,7 @@ opt-level = 3 # max optimisation
 4. Add ID licence https://spdx.org/licenses
 5. Ajouter Description
 6. ``cargo publish``
+6. publication depuis workspace ``cargo publish -p <package_name>``
 
 ```bash
 # Rendre version obsolète
@@ -793,6 +825,7 @@ mod tests {
 
 * Sur fonctions publiques definies dans ``src/lib.rs``
 * ``cargo test --test integration_test``
+* ``cargo test -p <package_name>`` test package depuis workspace
 
 ```bash
 .
@@ -824,6 +857,9 @@ fn it_adds_two() {
 ```
 
 ## Documentation
+
+* Support markdown syntaxe
+* Peut contenir des examples testables
 
 ```rust
 //! # My Crate
