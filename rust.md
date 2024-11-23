@@ -307,9 +307,9 @@ static mut MUTABLE_STATIC_VARIABLE: i32 = 5;
 let r#match = "tennis"
 
 // Lifetime
-// a reference with an explicit lifetime
+// Reference with explicit lifetime
 &'a i32
-// a mutable reference with an explicit lifetime
+// Mutable reference with explicit lifetime
 &'a mut i32
 ```
 ## Operateurs binaires
@@ -493,7 +493,7 @@ let mut borrows_mutably = || list.push(7);
 // list pas utilisable avant appel closure
 borrows_mutably();
 
-// closure prend ownership sur list avec move
+// closure take ownership sur list avec move
 let closure = move || {
  println!("From thread: {:?}", list));
 };
@@ -642,13 +642,13 @@ mode my_module {
 ## Generic types
 
 ```rust
-struct Pt<X1, Y1> {
- x: X1,
- y: Y1,
+struct Pt<X, Y> {
+ x: X,
+ y: Y,
 }
 
-impl<X1, Y1> Pt<X1, Y1> {
- fn mixup<X2, Y2>(self, other: Pt<X2, Y2>) -> Pt<X1, Y2> {
+impl<X, Y> Pt<X, Y> {
+ fn mix<V, W>(self, o: Pt<V, W>) -> Pt<X, W> {
   ...
  }
 }
@@ -697,7 +697,7 @@ where
 }
 
 // 1 seul type concret peut etre renvoyé
-fn summarizable(switch: bool) -> impl Month {}
+fn summer(switch: bool) -> impl Month {}
 ```
 
 ## Librairie standard
@@ -719,7 +719,8 @@ std::process::exit(1);
 println!("{country}", country = "France");
 println!("{} {}", 1, 3);
 println!("{0} {1} {0}", "Rust", "is");
-println!("binary {:08b}, octal {:o}, hexa {:x}",5, 5, 5);
+println!("binary {:08b}",5);
+println!("octal {:o}, hexa {:x}",5, 5);
 println!("{:?}", ma_struct); // debug
 println!("{:#?}", ma_struct); // pretty debug
 
