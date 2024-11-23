@@ -754,6 +754,15 @@ dbg!()
 panic!();
 ```
 
+### Chaine de Charactères
+
+```rust
+// lit un fichier text
+std::fs::read_to_string() -> Result<String>
+"LOL".to_lowercase()
+"lol".to_uppercase()
+```
+
 ### Erreurs
 
 ```rust
