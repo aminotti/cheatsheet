@@ -183,6 +183,8 @@ assert_eq!(slice, &[2, 3]);
 ```rust
 // Valeurs en memoire next to each other
 let v1: Vec<i32> = vec![1, 2, 3];
+// borrow de vecteur
+let v2: &[i32] = &v1;
 let mut v2 = Vec::new();
 v2.push(5);
 
@@ -528,6 +530,25 @@ my_iter.sum();
 my_iter.collect();
 ```
 * Adapter & consumer take ownsership of iterartor
+
+```rust
+// Itérator sur texte
+"Hello\nWorld".lines();
+"ascii".chars();
+"ascii".bytes();
+
+// Iterator methods
+next() -> Option<>
+last() -> Option<>
+nth(n: usize) -> Option<>
+count() -> usize
+for_each(|x| println!("{x}"))
+find<P>(|&x| x == 2) -> Option<>
+max() -> Option<>
+min() -> Option<>
+sum()
+rev()
+```
 
 ## Match
 
