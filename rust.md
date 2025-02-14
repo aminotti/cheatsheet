@@ -51,6 +51,8 @@ cargo doc [--open]
 # Ajout dependance lib
 cargo add <library[@version]|--path path|--git url>
 cargo add library -F library/feature
+# Mise à jour des lib dans le fichier lock
+cargo update
 # Ajout dependance BINAIRE
 cargo install <packagename>
 ```
