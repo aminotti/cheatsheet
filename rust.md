@@ -49,7 +49,7 @@ cargo check
 # Generation de la doc
 cargo doc [--open]
 # Ajout dependance BINAIRE
-`cargo install <packagename>
+cargo install <packagename>
 ```
 ### Cargo.toml
 
@@ -296,7 +296,7 @@ s.entry(String::from("Blue")).or_insert(50);
 // Déclarations variable
 let mut ma_var = String::from("hello");
 let ma_ref = &mut ma_var;
-let ref ma_ref_bis = ma_var;
+let ref mut ma_ref_bis = ma_var;
 assert_eq!(*ma_ref, *rma_ref_bis);
 
 // Déclaration de constante
