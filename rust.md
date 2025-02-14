@@ -48,6 +48,8 @@ cargo run [-- arg1 arg2  arg3]
 cargo check
 # Generation de la doc
 cargo doc [--open]
+# Ajout dependance lib
+cargo add <library[@version]|--path path|--git url>
 # Ajout dependance BINAIRE
 cargo install <packagename>
 ```
