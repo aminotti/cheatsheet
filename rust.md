@@ -50,6 +50,7 @@ cargo check
 cargo doc [--open]
 # Ajout dependance lib
 cargo add <library[@version]|--path path|--git url>
+cargo add library -F library/feature
 # Ajout dependance BINAIRE
 cargo install <packagename>
 ```
