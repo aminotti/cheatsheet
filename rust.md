@@ -215,6 +215,10 @@ for i in v1.into_iter() {
 for i in &mut v2 {
   *i += 50;
 }
+// Equivaut à
+for i in v2.iter_mut() {
+  *i += 50;
+}
 ```
 
 ### String
