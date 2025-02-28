@@ -405,6 +405,9 @@ for element in a.iter() {
 for (idx, element) in a.iter().enumerate() {
   println!("{element} at index {idx}.");
 }
+// loop from 1 to 100 included
+for n in 1..101 {}
+for n in 1..=100 {}
 ```
 
 ## Structures
