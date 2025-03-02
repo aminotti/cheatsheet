@@ -904,7 +904,7 @@ fn it_adds_two() {
 
 * Support markdown syntaxe
 * Peut contenir des examples testables
-*  Section ``#`` courante : Panics si code peut paniquer, Errors si code renvoi type Result, Safety si function unsafe
+*  Section ``#`` courantes : **Panics** si code peut paniquer, **Errors** si code renvoi type ``Result``, **Safety** si function unsafe
 
 ```rust
 //! # My Crate
