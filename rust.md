@@ -641,6 +641,15 @@ use std::{cmp::Ordering, io};
 // import io et write
 use std::io::{self, Write};
 ```
+Ré-exportation d'un module
+
+```rust
+// art.rs
+pub use self::utils::mix;
+
+// Usage dans une autre fichier
+use art::mix;
+```
 
 Definition
 
