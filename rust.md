@@ -781,8 +781,16 @@ panic!();
 ```rust
 // lit un fichier text
 std::fs::read_to_string() -> Result<String>
-"LOL".to_lowercase()
-"lol".to_uppercase()
+let foo = String::from("foo");
+let foo = "foo".to_owned();
+let foo = "foo".to_string();
+foo.push_str(" bar") -> String
+foo.push('\u{1f609}') -> String
+format!() -> String
+" lol ".trim() -> &str
+"LOL".to_lowercase() -> String
+"lol".to_uppercase() -> String
+"lol".replace("lol", "foo") -> String
 ```
 
 ### Erreurs
