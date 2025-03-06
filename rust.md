@@ -24,6 +24,8 @@
   * [Erreurs](#erreurs)
 * [Tests](#tests)
 * [Documentation](#documentation)
+* [Smart Pointers](#smart-pointers)
+
 
 ## Cargo
 
@@ -941,5 +943,19 @@ fn it_adds_two() {
 /// ```
 pub fn add_one(x: i32) -> i32 {
     x + 1
+}
+```
+
+## Smart Pointers
+
+* implement the **Deref** and **Drop** traits.
+* ``Box<T>``, ``Rc<T>``, ``Ref<T>``, ``String``, ``Vec<T>`` are smart pointers.
+
+```rust
+// Box<T> permet de stocker data dans heap
+// quand taille inconnu au moment de la compilation
+enum List {
+  Cons(i32, Box<List>),
+  Nil,
 }
 ```
