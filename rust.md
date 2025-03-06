@@ -958,4 +958,12 @@ enum List {
   Cons(i32, Box<List>),
   Nil,
 }
+// quand on veut définir un type qui implémente un trait
+trait Vehicle {}
+struct Truck,
+impl Vehicle for Truck{}
+fn main() {
+  let t: Box<dyn Vehicle>
+  t = Truck;
+}
 ```
