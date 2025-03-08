@@ -280,6 +280,11 @@ let raw_bytestring = br"\u{211D} no escape";
 
 ```rust
 use std::collections::HashMap;
+enum Fruit {
+    Apple,
+    Banana,
+}
+let mut hm HashMap<Fruit, u32>;
 
 let mut s = HashMap::new();
 s.insert(String::from("Blue"), 10);
@@ -300,6 +305,10 @@ s.entry(String::from("red")).or_insert(45);
 // or_insert returns a mutable reference
 // Blue existe, ne change pas sa valeur
 s.entry(String::from("Blue")).or_insert(50);
+// Add 1 apple
+*s.entry(Fruit::Apple).or_insert(0) += 1;
+// Si la value implement trait Default
+s.entry("lol").or_default();
 ```
 
 ## Declarations variable et constantes
