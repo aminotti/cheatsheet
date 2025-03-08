@@ -560,6 +560,7 @@ my_iter.collect();
 "Hello\nWorld".lines();
 "ascii".chars();
 "ascii".bytes();
+std::iter::repeat("bar").take(4).collect::<String>();
 
 // Iterator methods
 next() -> Option<>
@@ -802,6 +803,7 @@ format!() -> String
 "LOL".to_lowercase() -> String
 "lol".to_uppercase() -> String
 "lol".replace("lol", "foo") -> String
+"lol".repeat(4) -> String
 ```
 
 ### Erreurs
