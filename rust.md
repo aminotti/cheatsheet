@@ -1005,5 +1005,16 @@ let s = MyBox::new(String::from("lol"));
 // deref() de Box call deref() de String : renvoi &str
 assert_eq!(*s, "lol");
 
+// Rc<T> permet à une valeur d'avoir plusieurs owners
+// Valeur non mutable fonctionne qu'en singlethread
+a = Rc::new(String::from("lol"));
+b = Rc::Clone(&a);
+c = Rc::Clone(&a);
+Rc::strong_count(&a);
+
+//RefCell<T> interior mutability pattern
+// singlethread uniquement
+// Same as Box<T> but borrow rules check at runtime
+// panic si rules pas respectées
 
 ```
