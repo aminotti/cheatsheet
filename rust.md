@@ -982,4 +982,28 @@ fn main() {
   let t: Box<dyn Vehicle>
   t = Truck;
 }
+
+
+// Deref
+struct MyBox<t>(T);
+
+// Ou trait DerefMut si mutable
+impl<T> Deref for MyBox<T> {
+  type Target = T;
+
+  fn deref(&self) -> &Self::Target {
+    &self.0
+  }
+}
+
+let b = MyBox::new(5);
+assert_eq!(*b, 5);
+assert_eq!(*(b.deref()), 5);
+
+// Implicit Deref Coercion
+let s = MyBox::new(String::from("lol"));
+// deref() de Box call deref() de String : renvoi &str
+assert_eq!(*s, "lol");
+
+
 ```
