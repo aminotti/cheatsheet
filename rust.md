@@ -1013,8 +1013,31 @@ c = Rc::Clone(&a);
 Rc::strong_count(&a);
 
 //RefCell<T> interior mutability pattern
+// Permet modif sur immutable
 // singlethread uniquement
-// Same as Box<T> but borrow rules check at runtime
+// borrow rules check at runtime
 // panic si rules pas respectées
+struct MyMessage {
+  list: RefCell<Vec<String>>,
+}
+impl MyMessage {
+  fn new() -> Self {
+    Self{
+      list: RefCell::new(vec![])
+    }
+  }
+}
+impl Message for MyMessage {
+  fn send(&self, msg: &str) {
+    // self pas mutable et pourtant
+    // Modification de son attribut list
+    self.list.borrow_mut().push(msg);
+  }
+}
 
+// Rc<RefCell<T>> permet plusieur owner mutable
+a = Rc::new(RefCell::new(String::from("lol")));
+b = Rc::Clone(&a);
+c = Rc::Clone(&a);
+*a.borrow_mut().push_str("lol");
 ```
