@@ -1040,10 +1040,11 @@ a = Rc::new(RefCell::new(String::from("lol")));
 b = Rc::Clone(&a);
 c = Rc::Clone(&a);
 *a.borrow_mut().push_str("lol");
-```
+
 // Dépendances cyclique
 // ref strong (ownership) dans un sens, ref faible dans l'autre
 let w = Rc::downgrade(&a);
 Rc::weak_count(&a);
 // renvoi type Option<Rc<T>> qui renvoi none si valeur droppée (plus de ref strong)
 w.borrow().upgrade();
+```
