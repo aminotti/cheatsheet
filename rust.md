@@ -1060,7 +1060,7 @@ fn main() {
   handle.join().unwrap();
 }
 ```
-* Channels
+* Channels : n producers; 1 consumer
 ```rust
 let (tx, rx) = std::sync::mpsc::channel();
 
