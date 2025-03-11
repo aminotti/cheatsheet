@@ -1059,8 +1059,9 @@ fn main() {
   // attend que thread soit fini pour quitter main()
   handle.join().unwrap();
 }
-
-// Channels
+```
+* Channels
+```rust
 let (tx, rx) = std::sync::mpsc::channel();
 
 let handlers : Vec<_> = (0..10)map(||{
@@ -1081,5 +1082,31 @@ loop {
 }
 for r in rx {
   println!("{r}");
+}
+```
+* Share state with Mutex
+```rust
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+  let counter = Arc::new(Mutex::new(0));
+  let mut handles = vec![];
+
+  for _ in 0..10 {
+    let counter = Arc::clone(&counter);
+    let handle = thread::spawn(move|| {
+      // lock renvoi erreur si counter locké dans un thread qui a panic 
+      let mut num = counter.lock().unwrap();
+      *num += 1;
+    });
+    handles.push(handle);
+  }
+
+  for handle in handles {
+    handle.join().unwrap();
+  }
+
+  println!("Result: {}", *counter.lock().unwrap());
 }
 ```
