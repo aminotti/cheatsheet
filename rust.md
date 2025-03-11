@@ -25,6 +25,7 @@
 * [Tests](#tests)
 * [Documentation](#documentation)
 * [Smart Pointers](#smart-pointers)
+* [Concurrency](#concurrency)
 
 
 ## Cargo
@@ -1047,4 +1048,38 @@ let w = Rc::downgrade(&a);
 Rc::weak_count(&a);
 // renvoi type Option<Rc<T>> qui renvoi none si valeur droppée (plus de ref strong)
 w.borrow().upgrade();
+```
+## Concurrency
+
+```rust
+fn main() {
+  let handler = tread::spawn(||{
+    thread::sleep(Duration::from_millis(1));
+  });
+  // attend que thread soit fini pour quitter main()
+  handle.join().unwrap();
+}
+
+// Channels
+let (tx, rx) = std::sync::mpsc::channel();
+
+let handlers : Vec<_> = (0..10)map(||{
+  let tx2 = tx.clone();
+  tread:spawn(move|| {
+    let msg = "data";
+    tx2.send(msg).unwrap();
+    // msg no longer available
+  })
+}).collect();
+
+// bloc main thread so need to join handlers
+let data = rx.recv().unwrap();
+loop {
+  // non bloquant
+  let data = rx.try_recv().unwrap();
+  // other task
+}
+for r in rx {
+  println!("{r}");
+}
 ```
