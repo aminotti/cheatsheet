@@ -21,7 +21,7 @@
 * [Traits](#traits)
 * [Librairie standard](#librairie-standard)
   * [Printing and formating](#printing-and-formating)
-  * [Chaine de Charactères](#chaine-de-characteres)
+  * [Chaine de Charactères](#chaine-de-charactères)
   * [Erreurs](#erreurs)
 * [Tests](#tests)
 * [Documentation](#documentation)
