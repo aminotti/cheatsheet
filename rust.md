@@ -511,6 +511,12 @@ enum Option<T> {
 }
 let some_char = Some('e');
 let absent_number: Option<i32> = None;
+// Take() Takes the value out of the option, leaving a None in its place.
+let mut a = Some(4);
+if let Some(b) = a.take() {
+  assert_eq!(b, 4);
+}
+assert_eq!(a, None);
 ```
 
 ## Closures
