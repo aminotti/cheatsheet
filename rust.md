@@ -394,6 +394,7 @@ let result = loop {
   }
 }
 
+if let pattern = variable { }
 
 // While loop
 while expression {
@@ -420,8 +421,9 @@ for element in a.iter() {
   println!("the value is: {element}");
 }
 
-for (idx, element) in a.iter().enumerate() {
-  println!("{element} at index {idx}.");
+// (idx, val) est un pattern
+for (idx, val) in a.iter().enumerate() {
+  println!("{val} at index {idx}.");
 }
 // loop from 1 to 100 included
 for n in 1..101 {}
