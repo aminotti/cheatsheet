@@ -13,6 +13,7 @@ sudo apt install -y gcc-riscv64-unknown-elf qemu-system-riscv64
 cd <project>
 riscv64-unknown-elf-as -o hello.o hello.S 
 riscv64-unknown-elf-ld -T hello.ld -nostdlib -static -o hello.elf hello.o
+riscv64-unknown-elf-objcopy -O binary hello.elf hello.bin
 qemu-system-riscv64 -machine virt -nographic -serial mon:stdio -bios hello.elf
 ```
 
