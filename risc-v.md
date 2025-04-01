@@ -61,3 +61,27 @@ puts:
 .section .data
 message: .string "Hello, Bare Metal RISC-V!\n"
 ```
+
+## Instructions
+
+### Unconditional Jump Instructions
+
+| **Instruction**  | **Description** | **Saves Return Address?** |
+|------------------|--------------------------------|----------------|
+| `j label`       | Unconditional jump to `label` (alias for `jal x0, label`) | ❌ No |
+| `jr register`   | Jump to address stored in `register` (alias for `jalr x0, register, 0`) | ❌ No |
+| `jal label`     | Jump to `label` and store return address in `ra` | ✅ Yes (`ra = PC+4`) |
+| `jalr register` | Jump to address in `register` and store return address in `ra` | ✅ Yes (`ra = PC+4`) |
+| `call function` | Calls a function (alias for `jal function`) | ✅ Yes (`ra = PC+4`) |
+| `ret`           | Returns from function (alias for `jalr x0, ra, 0`) | ❌ No |
+
+### Conditional Branch Instructions
+
+| **Instruction**         | **Description**                             |
+|-------------------------|---------------------------------------------|
+| `beq rs1, rs2, label`  | Branch to `label` if `rs1 == rs2`           |
+| `bne rs1, rs2, label`  | Branch to `label` if `rs1 != rs2`           |
+| `blt rs1, rs2, label`  | Branch to `label` if `rs1 < rs2` (signed)   |
+| `bge rs1, rs2, label`  | Branch to `label` if `rs1 >= rs2` (signed)  |
+| `bltu rs1, rs2, label` | Branch to `label` if `rs1 < rs2` (unsigned) |
+| `bgeu rs1, rs2, label` | Branch to `label` if `rs1 >= rs2` (unsigned) |
