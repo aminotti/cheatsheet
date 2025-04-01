@@ -600,7 +600,7 @@ enum UsState {
 }
 enum Coin {
     Penny,
-    Nickel,
+    Nickel(String),
     Dime,
     Quarter(UsState),
 }
@@ -608,7 +608,11 @@ enum Coin {
 let c = Coin::Quarter(UsState::Alaska);
 match c {
   Coin::Penny => 1,
-  Coin::Nickel => 5,
+  // ref pour borrow valeur dans Nickel()
+  Coin::Nickel(ref msg)=> {
+    println!("{msg}!");
+    5
+  },
   Coin::Dime => 10,
   Coin::Quarter(state) => {
     println!("{:?}!", state);
