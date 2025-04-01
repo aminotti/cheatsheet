@@ -17,6 +17,8 @@ riscv64-unknown-elf-objcopy -O binary hello.elf hello.bin
 qemu-system-riscv64 -machine virt -nographic -serial mon:stdio -bios hello.bin
 ```
 
+*Quitter Qemu : Ctrl+A puis C puis quit*
+
 ## Code
 
 ```bash
