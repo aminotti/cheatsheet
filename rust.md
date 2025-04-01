@@ -320,7 +320,7 @@ s.entry("lol").or_default();
 let mut ma_var = String::from("hello");
 let ma_ref = &mut ma_var;
 let ref mut ma_ref_bis = ma_var;
-assert_eq!(*ma_ref, *rma_ref_bis);
+assert_eq!(*ma_ref, *ma_ref_bis);
 
 // Déclaration de constante
 const THREE_HOURS_IN_MINUTES: u32 = 3 * 60;
