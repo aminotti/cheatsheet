@@ -174,3 +174,67 @@ lb x4, 3(x1)   # ✅ Loads a byte from 0x1003 (bytes are always aligned)
 lh x3, 5(x1)   # ❌ Misaligned! 0x1005 is not a multiple of 2
 ld x4, 6(x1)   # ❌ Misaligned! 0x1006 is not a multiple of 8 (on RV64)
 ```
+
+### arithmetic & logical operations
+
+#### Arithmetic Instructions
+
+| **Instruction** | **Description** | **Type** |
+|---------------|----------------|--------|
+| `ADD rd, rs1, rs2`  | `rd = rs1 + rs2` (Addition) | R |
+| `ADDI rd, rs1, imm` | `rd = rs1 + imm` (Addition with Immediate) | I |
+| `SUB rd, rs1, rs2`  | `rd = rs1 - rs2` (Subtraction) | R |
+| `LUI rd, imm` | Load Upper Immediate: `rd = imm << 12` | U |
+| `AUIPC rd, imm` | Add Upper Immediate to PC: `rd = PC + (imm << 12)` | U |
+
+---
+
+#### Logical Instructions
+
+| **Instruction** | **Description** | **Type** |
+|---------------|----------------|--------|
+| `AND rd, rs1, rs2`  | `rd = rs1 & rs2` (Bitwise AND) | R |
+| `ANDI rd, rs1, imm` | `rd = rs1 & imm` (Bitwise AND with Immediate) | I |
+| `OR rd, rs1, rs2`   | `rd = rs1 \| rs2` (Bitwise OR) | R |
+| `ORI rd, rs1, imm`  | `rd = rs1 \| imm` (Bitwise OR with Immediate) | I |
+| `XOR rd, rs1, rs2`  | `rd = rs1 ^ rs2` (Bitwise XOR) | R |
+| `XORI rd, rs1, imm` | `rd = rs1 ^ imm` (Bitwise XOR with Immediate) | I |
+
+---
+
+#### Shift Instructions
+
+| **Instruction** | **Description** | **Type** |
+|---------------|----------------|--------|
+| `SLL rd, rs1, rs2`  | `rd = rs1 << rs2` (Logical Left Shift) | R |
+| `SLLI rd, rs1, imm` | `rd = rs1 << imm` (Logical Left Shift with Immediate) | I |
+| `SRL rd, rs1, rs2`  | `rd = rs1 >> rs2` (Logical Right Shift) | R |
+| `SRLI rd, rs1, imm` | `rd = rs1 >> imm` (Logical Right Shift with Immediate) | I |
+| `SRA rd, rs1, rs2`  | `rd = rs1 >> rs2` (Arithmetic Right Shift) | R |
+| `SRAI rd, rs1, imm` | `rd = rs1 >> imm` (Arithmetic Right Shift with Immediate) | I |
+
+---
+
+#### Set-on-Condition Instructions
+
+| **Instruction** | **Description** | **Type** |
+|---------------|----------------|--------|
+| `SLT rd, rs1, rs2`  | `rd = (rs1 < rs2) ? 1 : 0` (Set if Less Than) | R |
+| `SLTI rd, rs1, imm` | `rd = (rs1 < imm) ? 1 : 0` (Set if Less Than Immediate) | I |
+| `SLTU rd, rs1, rs2`  | `rd = (rs1 < rs2) ? 1 : 0` (Unsigned Comparison) | R |
+| `SLTIU rd, rs1, imm` | `rd = (rs1 < imm) ? 1 : 0` (Unsigned Comparison with Immediate) | I |
+
+---
+
+#### Multiplication & Division (RV32M / RV64M Extension)
+
+| **Instruction** | **Description** | **Type** |
+|---------------|----------------|--------|
+| `MUL rd, rs1, rs2`   | `rd = rs1 * rs2` (Multiply) | R |
+| `MULH rd, rs1, rs2`  | `rd = (rs1 * rs2) >> XLEN` (Multiply High Signed) | R |
+| `MULHU rd, rs1, rs2` | `rd = (rs1 * rs2) >> XLEN` (Multiply High Unsigned) | R |
+| `MULHSU rd, rs1, rs2` | `rd = (rs1 * rs2) >> XLEN` (Signed * Unsigned) | R |
+| `DIV rd, rs1, rs2`   | `rd = rs1 / rs2` (Signed Division) | R |
+| `DIVU rd, rs1, rs2`  | `rd = rs1 / rs2` (Unsigned Division) | R |
+| `REM rd, rs1, rs2`   | `rd = rs1 % rs2` (Signed Remainder) | R |
+| `REMU rd, rs1, rs2`  | `rd = rs1 % rs2` (Unsigned Remainder) | R |
