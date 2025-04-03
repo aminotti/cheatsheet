@@ -61,6 +61,50 @@ puts:
 .section .data
 message: .string "Hello, Bare Metal RISC-V!\n"
 ```
+## RISC-V Extensions
+
+### Base Integer Instruction Set
+
+- **RV32I**: Base integer instruction set for 32-bit processors.
+- **RV64I**: Base integer instruction set for 64-bit processors.
+
+### Standard Extensions
+
+| **Extension** | **Description** |
+|---------------|-----------------|
+| **M**         | Integer multiplication and division (RV32M, RV64M) |
+| **A**         | Atomic memory operations (RV32A, RV64A) |
+| **F**         | Single-precision floating-point (RV32F, RV64F) |
+| **D**         | Double-precision floating-point (RV32D, RV64D) |
+| **C**         | Compressed instructions (RV32C, RV64C) |
+| **B**         | Bit manipulation (RV32B, RV64B) |
+| **J**         | Dynamically translatable instructions (RV32J, RV64J) |
+| **T**         | Vector instructions (RV32T, RV64T) |
+| **V**         | Vector extension (RV32V, RV64V) |
+
+***G** is an alias for **MAFD***
+
+### Optional Extensions
+
+- **P**: Packed SIMD instructions (for parallel processing)
+- **Z**: Debugging and tracing support
+
+### Privileged Extensions
+
+| **Extension** | **Description** |
+|---------------|-----------------|
+| **S**         | Supervisor mode (for OS and privilege management) |
+| **U**         | User mode (basic user-level instruction support) |
+| **H**         | Hypervisor support (for virtualization) |
+| **X**         | Extensions for custom instructions and features |
+
+### Other Specialized Extensions
+
+| **Extension** | **Description** |
+|---------------|-----------------|
+| **N**         | Standard for the custom RISC-V extensions (user-defined) |
+| **L**         | Low-power optimization extension (optimizations for energy consumption) |
+
 ## Registers
 
 | **Nom**  | **Alias** | **Description** |
