@@ -238,3 +238,64 @@ ld x4, 6(x1)   # ❌ Misaligned! 0x1006 is not a multiple of 8 (on RV64)
 | `DIVU rd, rs1, rs2`  | `rd = rs1 / rs2` (Unsigned Division) | R |
 | `REM rd, rs1, rs2`   | `rd = rs1 % rs2` (Signed Remainder) | R |
 | `REMU rd, rs1, rs2`  | `rd = rs1 % rs2` (Unsigned Remainder) | R |
+
+### System Instructions (Environment Call & Break)
+
+| **Instruction** | **Description** |
+|-----------------|-----------------|
+| `ECALL`         | Environment call (used for system calls) |
+| `EBREAK`        | Triggers a breakpoint (used for debugging) |
+
+---
+
+### Fence Instructions (Memory Ordering)
+
+| **Instruction** | **Description** |
+|-----------------|-----------------|
+| `FENCE`         | Ensures memory operations complete in a specific order |
+| `FENCE.I`       | Synchronizes instruction memory (flushes instruction cache) |
+
+---
+
+### Atomic Instructions (Atomic Memory Operations)
+
+| **Instruction** | **Description** |
+|-----------------|-----------------|
+| `LR.W` / `LR.D` | Load-Reserved (read memory with intent to modify) |
+| `SC.W` / `SC.D` | Store-Conditional (write memory only if no other core modified it) |
+| `AMOSWAP.W` / `AMOSWAP.D` | Atomic swap |
+| `AMOADD.W` / `AMOADD.D` | Atomic addition |
+| `AMOXOR.W` / `AMOXOR.D` | Atomic XOR |
+| `AMOAND.W` / `AMOAND.D` | Atomic AND |
+| `AMOOR.W` / `AMOOR.D` | Atomic OR |
+| `AMOMIN.W` / `AMOMIN.D` | Atomic minimum (signed) |
+| `AMOMAX.W` / `AMOMAX.D` | Atomic maximum (signed) |
+| `AMOMINU.W` / `AMOMINU.D` | Atomic minimum (unsigned) |
+| `AMOMAXU.W` / `AMOMAXU.D` | Atomic maximum (unsigned) |
+
+---
+
+### Compressed Instructions (RISC-V C Extension)
+
+| **Instruction** | **Description** |
+|-----------------|-----------------|
+| `C.ADDI`        | Compressed add immediate |
+| `C.LI`          | Compressed load immediate |
+| `C.LW`          | Compressed load word |
+| `C.SW`          | Compressed store word |
+| `C.J`           | Compressed jump |
+| `C.BEQZ` / `C.BNEZ` | Compressed branch instructions |
+
+---
+
+### Floating-Point Instructions (RISC-V F & D Extensions)
+
+| **Instruction** | **Description** |
+|-----------------|-----------------|
+| `FADD.S` / `FADD.D` | Floating-point addition |
+| `FSUB.S` / `FSUB.D` | Floating-point subtraction |
+| `FMUL.S` / `FMUL.D` | Floating-point multiplication |
+| `FDIV.S` / `FDIV.D` | Floating-point division |
+| `FSQRT.S` / `FSQRT.D` | Floating-point square root |
+| `FSGNJ.S` / `FSGNJ.D` | Floating-point sign injection |
+| `FCVT.W.S` / `FCVT.L.D` | Convert between integer and float |
