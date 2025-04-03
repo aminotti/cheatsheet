@@ -85,3 +85,23 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | `bge rs1, rs2, label`  | Branch to `label` if `rs1 >= rs2` (signed)  |
 | `bltu rs1, rs2, label` | Branch to `label` if `rs1 < rs2` (unsigned) |
 | `bgeu rs1, rs2, label` | Branch to `label` if `rs1 >= rs2` (unsigned) |
+
+### Load and Store Instructions
+
+| **Instruction** | **Operation**                                      | **Description**                      |
+|---------------|------------------------------------------------|----------------------------------|
+| `lb rd, offset(rs1)`  | `rd = *(int8_t*)(rs1 + offset)`     | Load **byte** (8-bit) **signed** |
+| `lbu rd, offset(rs1)` | `rd = *(uint8_t*)(rs1 + offset)`    | Load **byte** (8-bit) **unsigned** |
+| `lh rd, offset(rs1)`  | `rd = *(int16_t*)(rs1 + offset)`    | Load **halfword** (16-bit) **signed** |
+| `lhu rd, offset(rs1)` | `rd = *(uint16_t*)(rs1 + offset)`   | Load **halfword** (16-bit) **unsigned** |
+| `lw rd, offset(rs1)`  | `rd = *(int32_t*)(rs1 + offset)`    | Load **word** (32-bit) |
+| `ld rd, offset(rs1)`  | `rd = *(int64_t*)(rs1 + offset)`    | Load **doubleword** (64-bit) (RV64 only) |
+| `sb rs2, offset(rs1)`  | `*(int8_t*)(rs1 + offset) = rs2`  | Store **byte** (8-bit) |
+| `sh rs2, offset(rs1)`  | `*(int16_t*)(rs1 + offset) = rs2` | Store **halfword** (16-bit) |
+| `sw rs2, offset(rs1)`  | `*(int32_t*)(rs1 + offset) = rs2` | Store **word** (32-bit) |
+| `sd rs2, offset(rs1)`  | `*(int64_t*)(rs1 + offset) = rs2` | Store **doubleword** (64-bit) (RV64 only) |
+
+* `rs1` = Base register (holds the memory address)
+* `offset` = Immediate value added to `rs1` (memory address offset)
+* `rd` = Destination register (for loads)
+* `rs2` = Source register (for stores)
