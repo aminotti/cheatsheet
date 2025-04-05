@@ -2,6 +2,8 @@
 
 ## Type state pattern
 
+*Pour utiliser les enum, il faut voir avec les const et types génériques : https://github.com/rust-lang/rust/issues/95174*
+
 ```rust
 #[derive(Debug)]
 struct Locked;
