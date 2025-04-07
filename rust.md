@@ -716,7 +716,9 @@ mode my_module {
 ## Generic types
 
 ```rust
-struct Pt<X, Y> {
+// type par défaut i32 => let my_pt = Pt{x: 24, y: 25};
+// instead of let p2 = Pt::<i32, i32>{x: 24, y: 25};
+struct Pt<X = i32, Y = i32> {
  x: X,
  y: Y,
 }
