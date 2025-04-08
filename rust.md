@@ -811,20 +811,39 @@ panic!();
 
 ### Chaine de Charactères
 
+#### Conversion
+
 ```rust
 // lit un fichier text
 std::fs::read_to_string() -> Result<String>
 let foo = String::from("foo");
+.parse::<T>() -> Result<>
+foo.as_str()	-> &str
+foo.into_bytes()	-> Vec<u8>
+// Converts Vec<u8> to String
+String::from_utf8()	-> Option<String>
+// Clones a &str into a String
 let foo = "foo".to_owned();
 let foo = "foo".to_string();
+```
+
+#### Manipulation
+
+```rust
 foo.push_str(" bar") -> String
 foo.push('\u{1f609}') -> String
 format!() -> String
 " lol ".trim() -> &str
+.trim_start()/.trim_end() -> &str
 "LOL".to_lowercase() -> String
 "lol".to_uppercase() -> String
 "lol".replace("lol", "foo") -> String
+"lol".replacen("l", "p", 2) -> String
 "lol".repeat(4) -> String
+.split(delim)/.split_whitespace()
+.join(delim)	// Join slices of strings
+.starts_with()/.ends_with()
+.contains()
 ```
 
 ### Erreurs
