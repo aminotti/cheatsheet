@@ -832,6 +832,11 @@ let foo = "foo".to_string();
 ```rust
 foo.push_str(" bar") -> String
 foo.push('\u{1f609}') -> String
+.insert(idx, char)	Insert a char at position
+.remove(idx)	Remove char at byte index
+// Replace part of a string
+.replace_range(range, &str)	
+.clear()
 format!() -> String
 " lol ".trim() -> &str
 .trim_start()/.trim_end() -> &str
@@ -844,6 +849,19 @@ format!() -> String
 .join(delim)	// Join slices of strings
 .starts_with()/.ends_with()
 .contains()
+.len()	Byte length (not char count!)
+.is_empty()	Check if empty
+// Slice safely (&s[start..end])
+s.get(start..end) -> Option<&str>
+```
+
+#### Search
+
+```rust
+.find(substr)	Byte index of first match
+.rfind(substr)	Last match
+.matches(substr)	Iterator of matches
+.match_indices(substr)	Iterator of match positions
 ```
 
 ### Erreurs
