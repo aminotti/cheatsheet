@@ -6,7 +6,12 @@
 
 ```bash
 # Create a new pool
-zpool create <pool> <device>...
+zpool create <pool> <device>
+zpool create mypool /dev/sdX
+zpool create mypool mirror /dev/sdX /dev/sdY
+zpool create mypool raidz /dev/sdX /dev/sdY /dev/sdZ
+zpool create mypool raidz2 /dev/sdX /dev/sdY /dev/sdZ /dev/sdW
+zpool create mypool raidz3 /dev/sdX /dev/sdY /dev/sdZ /dev/sdW /dev/sdV
 
 # List all pools
 zpool list
@@ -64,6 +69,7 @@ zfs rename <old> <new>
 ```bash
 # Create a snapshot
 zfs snapshot <pool>/<dataset>@<snapshot>
+zfs snapshot mypool/mydataset@snap1
 
 # List snapshots
 zfs list -t snapshot
@@ -100,15 +106,18 @@ zfs send -i <from-snap> <to-snap> > incr.zfs
 ```bash
 # Enable compression
 zfs set compression=on <dataset>
+zfs set compression=lz4 mypool/mydataset
 
 # Enable deduplication (use with caution!)
 zfs set dedup=on <dataset>
 
-# Set quota
+# Set quota (limit max space)
 zfs set quota=10G <dataset>
 
-# Set reservation
+# Set reservation (guarantees space)
 zfs set reservation=5G <dataset>
+
+zfs get quota,reservation mypool/mydataset
 ```
 
 ---
