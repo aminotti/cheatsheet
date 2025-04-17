@@ -134,3 +134,35 @@ zpool events
 # History of ZFS commands
 zpool history
 ```
+## Encrypted Dataset
+
+```bash
+# Create encrypted dataset with passphrase
+zfs create -o encryption=on -o keyformat=passphrase mypool/myencrypted-dataset
+# Create encrypted dataset with keyfile
+dd if=/dev/urandom of=/path/to/keyfile bs=32 count=1
+zfs create -o encryption=on -o keyformat=raw -o keylocation=file:///path/to/keyfile mypool/myencrypted-dataset
+# create encrypted dataset with keyfile or passphrase in a file
+zfs create -o encryption=on -o keyformat=file -o keylocation=file:///path/to/keyfile mypool/myencrypted-dataset
+
+# Verify
+zfs get encryption,keyformat,keylocation mypool/mydataset
+
+# Load the Encryption Key (will prompt for password)
+zfs load-key mypool/encrypted-dataset
+
+# Or use a key file
+zfs load-key -L file:///path/to/keyfile mypool/encrypted-dataset
+
+# Mount a dataset
+zfs mount mypool/encrypted-dataset
+
+# Check status
+zfs get keystatus mypool/encrypted-dataset
+
+# Lock the dataset
+zfs unload-key mypool/encrypted-dataset
+
+# Automatically mount at boot
+zfs set keylocation=file:///etc/zfs/mykey tank/secure-data
+zfs set canmount=on tank/secure-data
