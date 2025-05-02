@@ -195,7 +195,14 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | srai rd, rs1, shamt            | Shift Right Arith Imm    | 001_0011 | 101    | imm\[11:5\]=010_0000     | rd = rs1 >>s imm\[4:0\]                  | I   |
 | slti rd, rs1, imm              | Set Less Than Imm        | 001_0011 | 010    |                        | rd = (rs1 s< IMMI) ? 1 : 0              | I   |
 | sltiu rd, rs1, imm             | Set Less Than Imm (U)    | 001_0011 | 011    |                        | rd = (rs1 u< IMMI) ? 1 : 0             | I   |
-
+| lb rd, imm(rs1)        | Load Byte          | 000_0011 | 000    | —      | rd = M\[rs1 + imm\] | I   |
+| lh rd, imm(rs1)        | Load Half          | 000_0011 | 001    | —      | rd = M\[rs1 + imm\] | I   |
+| lw rd, imm(rs1)        | Load Word          | 000_0011 | 010    | —      | rd = M\[rs1 + imm\] | I   |
+| lbu rd, imm(rs1)       | Load Byte Unsigned | 000_0011 | 100    | —      | rd = M\[rs1 + imm\] | I   |
+| lhu rd, imm(rs1)       | Load Half Unsigned | 000_0011 | 101    | —      | rd = M\[rs1 + imm\] | I   |
+| sb rs2, imm(rs1)           | Store Byte           | 010_0011 | 000    | —      | M\[rs1 + imm\] = rs2 (8 bits)         | S   |
+| sh rs2, imm(rs1)           | Store Halfword       | 010_0011 | 001    | —      | M\[rs1 + imm\] = rs2 (16 bits)        | S   |
+| sw rs2, imm(rs1)           | Store Word           | 010_0011 | 010    | —      | M\[rs1 + imm\] = rs2 (32 bits)        | S   |
 
 ### Unconditional Jump Instructions
 
