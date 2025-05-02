@@ -172,6 +172,17 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 
 ## Instructions
 
+### Formats
+
+| \[31\]      | \[30–25\] | \[24–21\] | 20 | \[19–15\] | \[14–12\] | \[11–8\] | 7  | \[6–0\]  | Type   |
+|------------|-----------|-----------|----|-----------|-----------|----------|----|----------|--------|
+|            | funct7    | rs2       |    | rs1       | funct3    | rd       |    | opcode   | R-type |
+|            | imm\[11:0\]         |           |    | rs1       | funct3    | rd       |    | opcode   | I-type |
+|            | imm\[11:5\]         | rs2       |    | rs1       | funct3    | imm\[4:0\] |    | opcode   | S-type |
+| imm\[12\]  | imm\[10:5\]         | rs2       |    | rs1       | funct3    | imm\[4:1\] | imm\[11\] | opcode | B-type |
+| imm\[31:12\]                             |                           |                      |                     |                          |            | rd       |    | opcode   | U-type |
+| imm\[20\]  | imm\[10:1\]         | imm\[11\]  |    | imm\[19:12\] |           | rd       |    | opcode   | J-type |
+
 ### Instructions RV32I 
 
 | Syntax                        | Name                    | Opcode   | funct3 | funct7   | Description                        | FMT |
@@ -209,6 +220,8 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | bge rs1, rs2, imm          | Branch if ≥          | 110_0011 | 101    | —      | if (rs1 ≥ rs2) PC += imm             | B   |
 | bltu rs1, rs2, imm         | Branch if < Unsigned | 110_0011 | 110    | —      | if (rs1 <u rs2) PC += imm            | B   |
 | bgeu rs1, rs2, imm         | Branch if ≥ Unsigned | 110_0011 | 111    | —      | if (rs1 ≥u rs2) PC += imm            | B   |
+| lui rd, imm                | Load Upper Immediate | 011_0111 | —      | —      | rd = imm << 12                      | U   |
+| auipc rd, imm              | Add Upper Imm to PC  | 001_0111 | —      | —      | rd = PC + (imm << 12)               | U   |
 
 
 ### Unconditional Jump Instructions
