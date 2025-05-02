@@ -203,6 +203,13 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | sb rs2, imm(rs1)           | Store Byte           | 010_0011 | 000    | —      | M\[rs1 + imm\] = rs2 (8 bits)         | S   |
 | sh rs2, imm(rs1)           | Store Halfword       | 010_0011 | 001    | —      | M\[rs1 + imm\] = rs2 (16 bits)        | S   |
 | sw rs2, imm(rs1)           | Store Word           | 010_0011 | 010    | —      | M\[rs1 + imm\] = rs2 (32 bits)        | S   |
+| beq rs1, rs2, imm          | Branch if ==         | 110_0011 | 000    | —      | if (rs1 == rs2) PC += imm            | B   |
+| bne rs1, rs2, imm          | Branch if !=         | 110_0011 | 001    | —      | if (rs1 != rs2) PC += imm            | B   |
+| blt rs1, rs2, imm          | Branch if <          | 110_0011 | 100    | —      | if (rs1 < rs2) PC += imm             | B   |
+| bge rs1, rs2, imm          | Branch if ≥          | 110_0011 | 101    | —      | if (rs1 ≥ rs2) PC += imm             | B   |
+| bltu rs1, rs2, imm         | Branch if < Unsigned | 110_0011 | 110    | —      | if (rs1 <u rs2) PC += imm            | B   |
+| bgeu rs1, rs2, imm         | Branch if ≥ Unsigned | 110_0011 | 111    | —      | if (rs1 ≥u rs2) PC += imm            | B   |
+
 
 ### Unconditional Jump Instructions
 
