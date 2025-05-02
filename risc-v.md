@@ -11,13 +11,15 @@ sudo apt install -y gcc-riscv64-unknown-elf qemu-system-riscv64
 
 ```bash
 cd <project>
-riscv64-unknown-elf-as -o hello.o hello.S 
+riscv64-unknown-elf-as [-march=rv32i -mabi=ilp32] -o hello.o hello.S 
 riscv64-unknown-elf-ld -T hello.ld -nostdlib -static -o hello.elf hello.o
 riscv64-unknown-elf-objcopy -O binary hello.elf hello.bin
 qemu-system-riscv64 -machine virt -nographic -serial mon:stdio -bios hello.bin
 ```
 
 *Pour quitter Qemu : ``Ctrl+A``, puis ``C``, puis ``quit``.*
+
+*``-mabi=ilp32`` : Tous les types int, long, et pointer sont codés sur 32 bits*
 
 ## Code
 
@@ -248,3 +250,5 @@ lb x4, 3(x1)   # ✅ Loads a byte from 0x1003 (bytes are always aligned)
 lh x3, 5(x1)   # ❌ Misaligned! 0x1005 is not a multiple of 2
 ld x4, 6(x1)   # ❌ Misaligned! 0x1006 is not a multiple of 8 (on RV64)
 ```
+
+*Liste des instructions p. 90 de The RISC-V Instruction Set Manual Volume I*
