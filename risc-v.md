@@ -21,6 +21,8 @@ qemu-system-riscv64 -machine virt -nographic -serial mon:stdio -bios hello.bin
 
 ## Code
 
+ Linker script ``hello.ld`` :
+
 ```bash
 SECTIONS {
     . = 0x80000000;
@@ -37,6 +39,8 @@ SECTIONS {
     }
 }
 ```
+
+Code source ``hello.S`` :
 
 ```asm
 .equ UART_BASE, 0x10000000
@@ -167,6 +171,22 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 * `tp` (**Thread Pointer**) → Utilisé pour **les threads**.
 
 ## Instructions
+
+### Instructions RV32I 
+
+| Syntax                        | Name                    | Opcode   | funct3 | funct7   | Description                        | FMT |
+|------------------------------|-------------------------|----------|--------|----------|------------------------------------|-----|
+| add rd, rs1, rs2             | ADD                     | 011_0011 | 000    | 000_0000 | rd = rs1 + rs2                     | R   |
+| sub rd, rs1, rs2             | SUB                     | 011_0011 | 000    | 010_0000 | rd = rs1 - rs2                     | R   |
+| xor rd, rs1, rs2             | XOR                     | 011_0011 | 100    | 000_0000 | rd = rs1 ^ rs2                     | R   |
+| or rd, rs1, rs2              | OR                      | 011_0011 | 110    | 000_0000 | rd = rs1 \| rs2                    | R   |
+| and rd, rs1, rs2             | AND                     | 011_0011 | 111    | 000_0000 | rd = rs1 & rs2                     | R   |
+| sll rd, rs1, rs2             | Shift Left Logical      | 011_0011 | 001    | 000_0000 | rd = rs1 << rs2                    | R   |
+| srl rd, rs1, rs2             | Shift Right Logical     | 011_0011 | 101    | 000_0000 | rd = rs1 >>u rs2                   | R   |
+| sra rd, rs1, rs2             | Shift Right Arithmetic  | 011_0011 | 101    | 010_0000 | rd = rs1 >>s rs2                   | R   |
+| slt rd, rs1, rs2             | Set Less Than           | 011_0011 | 010    | 000_0000 | rd = (rs1 < rs2) ? 1 : 0           | R   |
+| sltu rd, rs1, rs2            | Set Less Than Unsigned  | 011_0011 | 011    | 000_0000 | rd = (rs1 <u rs2) ? 1 : 0          | R   |
+
 
 ### Unconditional Jump Instructions
 
