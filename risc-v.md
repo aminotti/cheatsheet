@@ -185,7 +185,7 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 
 ### Instructions RV32I 
 
-| Syntax                        | Name                    | Opcode   | funct3 | funct7   | Description                        | FMT |
+| Syntax                       | Name                    | Opcode   | funct3 | funct7   | Description                        | Type |
 |------------------------------|-------------------------|----------|--------|----------|------------------------------------|-----|
 | add rd, rs1, rs2             | ADD                     | 011_0011 | 000    | 000_0000 | rd = rs1 + rs2                     | R   |
 | sub rd, rs1, rs2             | SUB                     | 011_0011 | 000    | 010_0000 | rd = rs1 - rs2                     | R   |
@@ -195,16 +195,16 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | sll rd, rs1, rs2             | Shift Left Logical      | 011_0011 | 001    | 000_0000 | rd = rs1 << rs2                    | R   |
 | srl rd, rs1, rs2             | Shift Right Logical     | 011_0011 | 101    | 000_0000 | rd = rs1 >>u rs2                   | R   |
 | sra rd, rs1, rs2             | Shift Right Arithmetic  | 011_0011 | 101    | 010_0000 | rd = rs1 >>s rs2                   | R   |
-| slt rd, rs1, rs2             | Set Less Than           | 011_0011 | 010    | 000_0000 | rd = (rs1 s< rs2) ? 1 : 0           | R   |
+| slt rd, rs1, rs2             | Set Less Than           | 011_0011 | 010    | 000_0000 | rd = (rs1 s< rs2) ? 1 : 0          | R   |
 | sltu rd, rs1, rs2            | Set Less Than Unsigned  | 011_0011 | 011    | 000_0000 | rd = (rs1 u< rs2) ? 1 : 0          | R   |
 | addi rd, rs1, imm              | ADD Immediate            | 001_0011 | 000    |                        | rd = rs1 + IMMI                        | I   |
 | xori rd, rs1, imm              | XOR Immediate            | 001_0011 | 100    |                        | rd = rs1 ^ IMMI                        | I   |
 | ori rd, rs1, imm               | OR Immediate             | 001_0011 | 110    |                        | rd = rs1 \| IMMI                       | I   |
 | andi rd, rs1, imm              | AND Immediate            | 001_0011 | 111    |                        | rd = rs1 & IMMI                        | I   |
-| slli rd, rs1, shamt            | Shift Left Logical Imm   | 001_0011 | 001    | imm\[11:5\]=000_0000     | rd = rs1 << imm\[4:0\]                   | I   |
-| srli rd, rs1, shamt            | Shift Right Logical Imm  | 001_0011 | 101    | imm\[11:5\]=000_0000     | rd = rs1 >>u imm\[4:0\]                  | I   |
-| srai rd, rs1, shamt            | Shift Right Arith Imm    | 001_0011 | 101    | imm\[11:5\]=010_0000     | rd = rs1 >>s imm\[4:0\]                  | I   |
-| slti rd, rs1, imm              | Set Less Than Imm        | 001_0011 | 010    |                        | rd = (rs1 s< IMMI) ? 1 : 0              | I   |
+| slli rd, rs1, shamt            | Shift Left Logical Imm   | 001_0011 | 001    | imm\[11:5\]=000_0000   | rd = rs1 << imm\[4:0\]                 | I   |
+| srli rd, rs1, shamt            | Shift Right Logical Imm  | 001_0011 | 101    | imm\[11:5\]=000_0000   | rd = rs1 >>u imm\[4:0\]                | I   |
+| srai rd, rs1, shamt            | Shift Right Arith Imm    | 001_0011 | 101    | imm\[11:5\]=010_0000   | rd = rs1 >>s imm\[4:0\]                | I   |
+| slti rd, rs1, imm              | Set Less Than Imm        | 001_0011 | 010    |                        | rd = (rs1 s< IMMI) ? 1 : 0             | I   |
 | sltiu rd, rs1, imm             | Set Less Than Imm (U)    | 001_0011 | 011    |                        | rd = (rs1 u< IMMI) ? 1 : 0             | I   |
 | lb rd, imm(rs1)        | Load Byte          | 000_0011 | 000    | —      | rd = M\[rs1 + imm\] | I   |
 | lh rd, imm(rs1)        | Load Half          | 000_0011 | 001    | —      | rd = M\[rs1 + imm\] | I   |
@@ -222,6 +222,10 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 | bgeu rs1, rs2, imm         | Branch if ≥ Unsigned | 110_0011 | 111    | —      | if (rs1 ≥u rs2) PC += imm            | B   |
 | lui rd, imm                | Load Upper Immediate | 011_0111 | —      | —      | rd = imm << 12                      | U   |
 | auipc rd, imm              | Add Upper Imm to PC  | 001_0111 | —      | —      | rd = PC + (imm << 12)               | U   |
+| jal rd, imm                | Jump and Link        | 110_1111 | —      | —      | rd = PC + 4 ; PC += imm             | J   |
+| jalr rd, rs1, imm   | Jump And Link Register | 110_0111 | 000    | —      | rd = PC+4; PC = (rs1 + imm) & ~1                 | I   |
+| ecall               | Environment Call       | 111_0011 | 000    | —      | Appel au système d'exploitation ou superviseur   | I   |
+| ebreak              | Environment Break      | 111_0011 | 000    | —      | Utilisé pour déclencher un débogueur             | I   |
 
 
 ### Unconditional Jump Instructions
