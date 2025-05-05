@@ -251,4 +251,8 @@ lh x3, 5(x1)   # ❌ Misaligned! 0x1005 is not a multiple of 2
 ld x4, 6(x1)   # ❌ Misaligned! 0x1006 is not a multiple of 8 (on RV64)
 ```
 
+* valeur imédiate sur 12 bits, les 20 bit de poid for sont complété par la même valeur que le 12eme bit de poid fort (des 0 si postitif, des 1 si négatif)
+* not : ``xori rd, rs, -1`` => -1 vaut 0xFFFFFFFF
+* subi : ``addi rd, rs, -imm`` => soustraction est une addition d'un nombre négatif
+
 *Liste des instructions p. 90 de The RISC-V Instruction Set Manual Volume I*
