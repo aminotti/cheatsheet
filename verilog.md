@@ -68,3 +68,21 @@ vvp mux_wave_2_1
 # Visualize
 gtkwave test_2_1mux.vcd
 ```
+
+## Syntaxe
+
+### Module
+
+```verilog
+module and_gate (
+    input a, // wire by default
+    input b,
+    output c,
+    inout d
+);
+
+  assign c = a & b;
+  assign d = d & c;
+
+endmodule
+```
