@@ -129,3 +129,48 @@ reg [3:0] matrix [0:3][0:3]; // A 4x4 array of 4-bit registers
 | Conditional Expressions| `? :`                                                      | Similar to the ternary operator in C              |
 
 *``()`` can be used too*
+
+### Assignments
+
+ * continus vs Procedural
+ * continus : only ``=`` and can assigned only to type wire
+ * procedural (initial or always block) : ``=`` blockant ou ``<=`` non blockant (non blockant valeur assignée simultanément en sortie de block et donc modification dispo au prochain cycle)
+
+```verilog
+module constant_one (
+    output wire d
+ );
+    reg a, b, c;
+
+    initial begin
+        a = 0;
+        b = 1;
+        c = a | b;
+    end
+
+    assign d = c;
+
+endmodule
+```
+
+```verilog
+module example (
+    input wire clk,
+    input wire a,
+    input wire b,
+    output wire o
+);
+    reg a_reg, b_reg;  // Declare reg types for internal logic
+    reg o_reg;          // Output stored in reg
+
+    // avec <= les registre sont updated apres la fin du block alway donc apres le clock edge
+    always @(posedge clk) begin
+        a_reg <= a;     // Non-blocking assignment
+        b_reg <= b;     // Non-blocking assignment
+        o_reg <= a_reg & b_reg;  // Non-blocking assignment,  a_reg & b_reg ancienne valeurs 
+    end
+
+    assign o = o_reg;  // temps réel, o changera de valeur dès que o_reg changera sa valeur
+
+endmodule
+```
