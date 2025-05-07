@@ -123,9 +123,9 @@ reg [3:0] matrix [0:3][0:3]; // A 4x4 array of 4-bit registers
 | Type                   | Operators                                                  | Description                                       |
 |------------------------|------------------------------------------------------------|---------------------------------------------------|
 | Arithmetic Expressions | `+`, `-`, `!` (boolea not), `/`, `%`                       | Used for mathematical operations                  |
-| Logical Operators      | `&&`, `||`, `!`                                            | Used for logical operations                       |
+| Logical Operators      | `&&`, `\|\|`, `!`                                            | Used for logical operations                       |
 | Relational Expressions | `==`, `!=`, `<`, `<=`, `>`, `>=`                           | Used to compare values                            |
-| Bitwise Expressions    | `&`, `|`, `~` (bitwise not), `^`, `<<`, `>>`, `<<<`, `>>>` | Operate on individual bits of operands            |
+| Bitwise Expressions    | `&`, `\|`, `~` (bitwise not), `^`, `<<`, `>>`, `<<<`, `>>>` | Operate on individual bits of operands            |
 | Conditional Expressions| `? :`                                                      | Similar to the ternary operator in C              |
 
 *``()`` can be used too*
