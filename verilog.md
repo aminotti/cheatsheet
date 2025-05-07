@@ -62,7 +62,7 @@ endmodule
 
 ```bash
 # Compilation
-iverilog -o mux_wave_2_1 multiplexer_2_1.v multiplexer_tb_2_1.v
+iverilog -o mux_wave_2_1 multiplexer_2_1.v multiplexer_2_1_tb.v
 # run
 vvp mux_wave_2_1
 # Visualize
