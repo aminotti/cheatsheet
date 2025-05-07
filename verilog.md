@@ -86,3 +86,34 @@ module and_gate (
 
 endmodule
 ```
+### Data type
+
+| Value | Represents              | Description                                                                        |
+|-------|-------------------------|------------------------------------------------------------------------------------|
+| 0     | A logic zero, or false  | Represents a logic zero, indicating a false condition in the circuit.              |
+| 1     | A logic one, or true    | Represents a logic one, indicating a true condition in the circuit.                |
+| x     | An unknown logic value  | Denotes an unknown logic value, used when the logic state can't be determined.     |
+| z     | A high-impedance state  | Represents a high-impedance state, meaning the output is effectively disconnected. |
+
+```verilog
+// net type : to represent connections between hardware components
+wire a;       // A single wire
+wire [3:0] b; // A 4-bit wire
+tri a;       // A single wire, A tri-state wire that can be driven by multiple sources. It can be in one of three states: high, low, or high impedance (Z).
+
+// Register types : to store values. Unlike nets, registers can hold their value until explicitly changed.
+reg a;       // A single reg
+reg [3:0] b;  // A 4-bit reg
+reg signed [7:0] signed_data;       // A signed 8-bit register
+reg unsigned [7:0] unsigned_data;   // An unsigned 8-bit register
+integer a;    // A 32-bit integer
+real a;       // A real number
+
+// user defined
+typedef enum {RED, GREEN, BLUE} color_t; // Define an enumerated type
+color_t color;                           // Variable of type color_t
+
+// Array
+reg [7:0] memory [0:255]; // An array of 256 8-bit registers
+reg [3:0] matrix [0:3][0:3]; // A 4x4 array of 4-bit registers
+```
