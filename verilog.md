@@ -227,3 +227,81 @@ Sequential logic can be viewed as an extension of combinational logic that incor
   * ``always @(posedge clk)`` or ``always @(negedge clk)``
 
 ***The left side of the assignment in an always or intial block must always be a reg type.***
+
+#### Statement
+
+##### If-Else Statement
+
+ Multiple else if blocks (or even simple if-else statements) are synthesized as a multiplexer.
+
+```verilog
+module if_else (
+    input wire [1:0] sel,
+    input wire in,
+    output reg out
+);
+
+always @(*) begin
+    if (sel == 2'b00) begin
+        out = in;
+    end else if (sel == 2'b01) begin
+        out = in;
+    end else begin
+        out = !in;
+    end
+end
+
+endmodule
+
+// Can be simplifly in case of one line statement
+if (condition)
+    // Single Statement
+else
+    // Single Statement
+```
+
+##### For Loop Statement
+
+```verilog
+module shift_register (
+    input wire clk,
+    input wire new_data,
+    output reg [7:0] shift_reg
+);
+
+    integer i; 
+
+    always @(posedge clk) begin
+        for (i = 7; i > 0; i = i - 1) begin
+            shift_reg[i] <= shift_reg[i - 1];
+        end
+        shift_reg[0] <= new_data;
+    end
+
+endmodule
+```
+
+##### Case Statement
+
+The case statement should be the preferred option when selective execution is required. Unlike the if-else statement, the case statement is typically more efficiently synthesized and does not result in a chain of multiplexers.
+
+```verilog
+module arithmetic_unit (
+    input wire [3:0] a,
+    input wire [3:0] b,
+    input wire operation,
+    output reg [7:0] result
+);
+
+always @(*) begin
+    case (operation)
+        1'b0: result = a + b;
+        1'b1:  begin
+	                // Multiple statements
+                  result = a - b;
+               end
+    endcase
+end
+
+endmodule
+```
