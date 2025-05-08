@@ -118,6 +118,41 @@ reg [7:0] memory [0:255]; // An array of 256 8-bit registers
 reg [3:0] matrix [0:3][0:3]; // A 4x4 array of 4-bit registers
 ```
 
+* Access vector
+
+```verilog
+// bitwise operator can be used on whole vector
+module bitwise_and_8x8 (
+    input [7:0] a,
+    input [7:0] b,
+    output [7:0] c
+);
+
+assign c = a & b;
+
+endmodule
+
+// or on a slice
+module bitwise_and_4x4 (
+    input [7:0] a,
+    output [3:0] c
+);
+
+assign c = a[3:0] & a[7:4];
+
+endmodule
+
+// or on a single bit
+module bitwise_and_4x4 (
+    input [1:0] a,
+    output c
+);
+
+assign c = a[0] & a[1];
+
+endmodule
+```
+
 ### Expressions
 
 | Type                   | Operators                                                  | Description                                       |
