@@ -305,3 +305,45 @@ end
 
 endmodule
 ```
+
+### Macro & literals
+
+```bash
+<size>'<base><value>
+```
+
+* ``size`` : number of bits
+* ``base`` : Number base of the literal:
+ * ``'b`` = binary
+ * ``'d`` = decimal
+ * ``'h`` = hexadecimal
+ * ``'o`` = octal
+* ``value`` : The actual number in the specified base
+
+```verilog
+// Example
+4'b1010
+16'hABCD
+8'bx // 8-bit unknown value
+8'bz // 8-bit high-impedance value
+8'b1010_1101 // You can use _ as a visual separator
+```
+
+```verilog
+// constants.vh
+`define ALU_MOD_ADD 3'b000
+`define ALU_MOD_INC 3'b001
+`define ALU_MOD_SUB 3'b010
+```
+
+```verilog
+`include "constants.vh"
+
+always @ (posedge i_clk) begin
+	case(op_code)
+		`ALU_MOD_ADD: {carry, o_c} = i_a + i_b;
+		`ALU_MOD_INC: {carry, o_c} = i_a + 1;
+		`ALU_MOD_SUB: o_c = i_a - i_b;
+	endcase
+end
+```
