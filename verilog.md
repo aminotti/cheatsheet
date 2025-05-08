@@ -209,3 +209,21 @@ module example (
 
 endmodule
 ```
+
+### Abstraction levels
+
+* Gate level (``not``, ``and``, ``or``, ``xor``, ``nand``, ``nor``, ``xnor``, ``buf``)
+* Flow level (``assign``)
+* Behavior level (procedural) : ``always`` block
+
+#### Combinational vs Sequential
+
+Sequential logic can be viewed as an extension of combinational logic that incorporates memory elements.
+
+* Combinational Logic :
+  * ``assign``
+  * ``always @(*)``
+* Sequential logic :
+  * ``always @(posedge clk)`` or ``always @(negedge clk)``
+
+***The left side of the assignment in an always or intial block must always be a reg type.***
