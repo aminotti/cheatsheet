@@ -86,6 +86,17 @@ module and_gate (
 
 endmodule
 ```
+
+```verilog
+module top_mod (input in1, input in2, output cc, inout dd);
+
+and_gate instance1(in1, in2, cc, dd); // instancie et appel par ordre
+// ou
+and_gate instance1(.c(cc), .d(dd), .a(in1), .b(in2)); // instancie et appel par nom
+
+endmodule
+```
+
 ### Data type
 
 | Value | Represents              | Description                                                                        |
