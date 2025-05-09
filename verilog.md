@@ -130,6 +130,10 @@ output [23:0] out;
 assign {out[7:0], out[15:8]} = in;         // Swap two bytes. Right side and left side are both 16-bit vectors.
 assign out = {in[7:0], in[15:8]};    // This is the same thing.
 assign out = {in[7:0], 8'b10101010, in[15:8]};
+
+// input [4:0] a, b, c, d, e, f
+// output [7:0] w, x, y, z
+assign {w, x, y, z} = {a, b, c, d, e, f, 2'b11};
 ```
 
 * Access vector
