@@ -134,6 +134,11 @@ assign out = {in[7:0], 8'b10101010, in[15:8]};
 // input [4:0] a, b, c, d, e, f
 // output [7:0] w, x, y, z
 assign {w, x, y, z} = {a, b, c, d, e, f, 2'b11};
+
+// replication operator : {num{vector}}
+{5{1'b1}}           // 5'b11111
+{2{a,b,c}}          // The same as {a,b,c,a,b,c}
+{3'd5, {2{3'd6}}}
 ```
 
 * Access vector
