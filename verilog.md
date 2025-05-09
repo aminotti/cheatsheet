@@ -105,17 +105,31 @@ tri a;       // A single wire, A tri-state wire that can be driven by multiple s
 reg a;       // A single reg
 reg [3:0] b;  // A 4-bit reg
 reg signed [7:0] signed_data;       // A signed 8-bit register
+reg signed [0:7] signed_data;       // big-endian
+wire [3:-2] z;  // négative are allowed
 reg unsigned [7:0] unsigned_data;   // An unsigned 8-bit register
 integer a;    // A 32-bit integer
 real a;       // A real number
+
+// ATTENTION déclaration de wire implicite toujours 1 bit
+wire [2:0] a;
+assign a = 3'b101;  // a = 101
+assign b = a; // b = 1 et non 101 car b pas déclaré donc implicite donc 1 bit
 
 // user defined
 typedef enum {RED, GREEN, BLUE} color_t; // Define an enumerated type
 color_t color;                           // Variable of type color_t
 
 // Array
-reg [7:0] memory [0:255]; // An array of 256 8-bit registers
+reg [7:0] mem [0:255]; // An array of 256 8-bit registers (256 unpacked elements, each of which is a 8-bit packed vector of reg)
 reg [3:0] matrix [0:3][0:3]; // A 4x4 array of 4-bit registers
+
+// Concaténation
+input [15:0] in;
+output [23:0] out;
+assign {out[7:0], out[15:8]} = in;         // Swap two bytes. Right side and left side are both 16-bit vectors.
+assign out = {in[7:0], in[15:8]};    // This is the same thing.
+assign out = {in[7:0], 8'b10101010, in[15:8]};
 ```
 
 * Access vector
@@ -155,15 +169,18 @@ endmodule
 
 ### Expressions
 
-| Type                   | Operators                                                  | Description                                       |
-|------------------------|------------------------------------------------------------|---------------------------------------------------|
-| Arithmetic Expressions | `+`, `-`, `!` (boolea not), `/`, `%`                       | Used for mathematical operations                  |
-| Logical Operators      | `&&`, `\|\|`, `!`                                            | Used for logical operations                       |
-| Relational Expressions | `==`, `!=`, `<`, `<=`, `>`, `>=`                           | Used to compare values                            |
+| Type                   | Operators                                                   | Description                                       |
+|------------------------|-------------------------------------------------------------|---------------------------------------------------|
+| Arithmetic Expressions | `+`, `-`, `!` (boolea not), `/`, `%`                        | Used for mathematical operations                  |
+| Logical Operators      | `&&`, `\|\|`, `!`                                           | Used for logical operations                       |
+| Relational Expressions | `==`, `!=`, `<`, `<=`, `>`, `>=`                            | Used to compare values                            |
 | Bitwise Expressions    | `&`, `\|`, `~` (bitwise not), `^`, `<<`, `>>`, `<<<`, `>>>` | Operate on individual bits of operands            |
-| Conditional Expressions| `? :`                                                      | Similar to the ternary operator in C              |
+| Conditional Expressions| `? :`                                                       | Similar to the ternary operator in C              |
+| Autres                 | (), {}                                                      | priorité et concaténation                         |
 
 *``()`` can be used too*
+
+*A logical operation treats the operand as a boolean value (true = non-zero, false = zero) and produces a 1-bit output.*
 
 ### Assignments
 
