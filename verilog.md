@@ -364,6 +364,7 @@ endmodule
 8'bx // 8-bit unknown value
 8'bz // 8-bit high-impedance value
 8'b1010_1101 // You can use _ as a visual separator
+out = '1; // Special literal, all bits of out are set to 1
 ```
 
 ```verilog
