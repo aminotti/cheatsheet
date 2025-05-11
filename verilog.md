@@ -390,3 +390,4 @@ end
 * Une **comparaison** revient à effecter un not **logique** sur un xnor **bitwise** ``eq = !(a ^ 3'b101)`` (``a`` etant sur 3 bits également, le not logic ``!`` renvoi 1 si égal mais le not bitwise``~`` renverait ``7`` aka ``3'b111``)
 * **Addition** de 2 bits avec une retenue en entrée : ``sum = a & b & Cin``
 * **Retenue** suite à une addition de 2 bits : ``Cout = (a & b) | (Cin & (a | b))``
+* Desing en *pipeline* pour augmenter la fréquence
