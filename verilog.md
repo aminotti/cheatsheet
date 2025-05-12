@@ -420,3 +420,13 @@ abc | z
 * Produit de sommes (z = 0) : ``(a | b | c) & (a | ~b | ~c) & (~a | b | ~c) & (~a | ~b | c)`` ou ``f=(a+b+c)(a+b'+c')(a'+b+c')(a'+b'+c)``.
 
 *Priorité ``()`` puis ``&`` puis ``|``*
+
+### Théorèmes fondamentaux
+
+* Loi d’idempotence : ``a + a = a``, ``a + 1 = 1``, ``a × a = a``, ``a × 0 = 0``
+* Loi d’absorption : ``a + (a × b) = a``, ``a × (a + b) = a``
+* Loi d’associativité : ``(a + b) + c = a + (b + c)``, `` (a × b) × c = a × (b × c)``
+* Unicité du complément : Si ``a + b = 1`` et ``a × b = 0`` alors ``b = a'``
+* Loi d’involution : ``a'' = a``, ``0' = 1`` et ``1' = 0``
+* Loi de Morgan : ``(a + b)' = a' × b'``, ``(a × b)' = a' + b'``
+* Généralisation de la loi de Morgan : ``(a + b + c + …)' = a' × b' × c' × …``, ``(a × b × c × …)' = a' + b' + c' + …``
