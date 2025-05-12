@@ -185,6 +185,13 @@ module bitwise_and_4x4 (
 assign c = a[0] & a[1];
 
 endmodule
+
+// Slice vector part select
+{in[sel*4+3], in[sel*4+2], in[sel*4+1], in[sel*4+0]};
+// Equivaut à
+in[sel*4+3 -: 4];
+// Equivaut à
+in[sel*4 +: 4];
 ```
 
 ### Expressions
