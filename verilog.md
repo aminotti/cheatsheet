@@ -400,3 +400,23 @@ end
 * **Addition** de 2 bits avec une retenue en entrée : ``sum = a ^ b ^ Cin``
 * **Retenue** suite à une addition de 2 bits : ``Cout = (a & b) | (Cin & (a | b))``
 * Desing en *pipeline* pour augmenter la fréquence
+
+## Forme canonique fonction booléenne
+
+```bash
+# Table de vérité
+abc | z
+----|---
+000	| 0
+001	| 1
+010	| 1
+011	| 0
+100	| 1
+101	| 0
+110	| 0
+111	| 1
+```
+* Somme de produits (z = 1) : ``f = (~a & ~b & c) | (~a & b & ~c) | (a & ~b & ~c) | (a & b & c)`` ou ``f=a'b'c+a'bc'+ab'c'+abc``.
+* Produit de sommes (z = 0) : ``(a | b | c) & (a | ~b | ~c) & (~a | b | ~c) & (~a | ~b | c)`` ou ``f=(a+b+c)(a+b'+c')(a'+b+c')(a'+b'+c)``.
+
+*Priorité ``()`` puis ``&`` puis ``|``*
