@@ -365,7 +365,8 @@ always @(*) begin
 end
 ```
 
-*There is also a similar **casex** that treats both x and z as don't-care.*
+* *There is also a similar **casex** that treats both ``x`` and ``z`` as don't-care.*
+* *The digit ``?`` is a synonym for ``z``. so ``2'bz0`` is the same as ``2'b?0``*
 
 ### Macro & literals
 
