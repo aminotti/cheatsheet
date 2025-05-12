@@ -365,6 +365,8 @@ always @(*) begin
 end
 ```
 
+*There is also a similar **casex** that treats both x and z as don't-care.*
+
 ### Macro & literals
 
 ```bash
