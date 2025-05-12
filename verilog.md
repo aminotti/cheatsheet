@@ -430,3 +430,7 @@ abc | z
 * Loi d’involution : ``a'' = a``, ``0' = 1`` et ``1' = 0``
 * Loi de Morgan : ``(a + b)' = a' × b'``, ``(a × b)' = a' + b'``
 * Généralisation de la loi de Morgan : ``(a + b + c + …)' = a' × b' × c' × …``, ``(a × b × c × …)' = a' + b' + c' + …``
+
+### Table de Karnaugh
+
+* https://www.youtube.com/watch?v=2tULBk6V9ZE
