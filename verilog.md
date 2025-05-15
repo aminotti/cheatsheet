@@ -451,3 +451,10 @@ abc | z
 ### Table de Karnaugh
 
 * https://www.youtube.com/watch?v=2tULBk6V9ZE
+* Les états indeterminés (``x``) peuvent être utilisés dans les regroupements de ``1`` et de ``0``
+
+## Circuits logique
+
+### Binary-Coded Decimal (BCD)
+
+Consiste à séparer les unité, dizaine, centaines... d'un nombre décimal et a réprésenter chaque chiffre en binaire sur 4 bits. Par exemple ``59`` (8'b00111011) => ``4'b0101`` (5) et ``4'b1001`` (9).
