@@ -209,6 +209,14 @@ in[sel*4 +: 4];
 
 *A logical operation treats the operand as a boolean value (true = non-zero, false = zero) and produces a 1-bit output.*
 
+```verilog
+// reduction operators
+& a[3:0]     // AND: a[3]&a[2]&a[1]&a[0]. Equivalent to (a[3:0] == 4'hf)
+| b[3:0]     // OR:  b[3]|b[2]|b[1]|b[0]. Equivalent to (b[3:0] != 4'h0)
+^ c[2:0]     // XOR: c[2]^c[1]^c[0]
+~& d[2:0]    // NAND:  c[2]~&c[1]~&c[0]
+```
+
 ### Assignments
 
  * continus vs Procedural
