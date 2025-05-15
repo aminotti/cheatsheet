@@ -266,9 +266,9 @@ Sequential logic can be viewed as an extension of combinational logic that incor
 
 * Combinational Logic :
   * ``assign``
-  * ``always @(*)``
+  * ``always @(*)`` => sue ``=`` (same as assign)
 * Sequential logic :
-  * ``always @(posedge clk)`` or ``always @(negedge clk)``
+  * ``always @(posedge clk)`` or ``always @(negedge clk)`` => use ``<=``
 
 ***The left side of the assignment in an always or intial block must always be a reg type.***
 
