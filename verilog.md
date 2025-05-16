@@ -115,6 +115,7 @@ tri a;       // A single wire, A tri-state wire that can be driven by multiple s
 // Register types : to store values. Unlike nets, registers can hold their value until explicitly changed.
 reg a;       // A single reg
 reg [3:0] b;  // A 4-bit reg
+$bits(b) // Renvoi la taile de b en bits (4)
 reg signed [7:0] signed_data;       // A signed 8-bit register
 reg signed [0:7] signed_data;       // big-endian
 wire [3:-2] z;  // négative are allowed
@@ -324,7 +325,7 @@ module shift_register (
     integer i; 
 
     always @(posedge clk) begin
-        for (i = 7; i > 0; i = i - 1) begin
+        for (i = 7; i > 0; i++) begin
             shift_reg[i] <= shift_reg[i - 1];
         end
         shift_reg[0] <= new_data;
