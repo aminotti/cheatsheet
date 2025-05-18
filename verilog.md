@@ -400,6 +400,24 @@ module top_module(
 endmodule
 ```
 
+#### Instance array
+
+```verilog
+module top_module (
+    input wire [7:0] a, b,
+    output wire [7:0] y
+);
+
+    // Instance array of AND gates
+    and and_gates [7:0] (
+        .a(a),   // Connect all a[i] to each and[i].a
+        .b(b),   // Connect all b[i] to each and[i].b
+        .y(y)    // Each y[i] = a[i] & b[i]
+    );
+
+endmodule
+```
+
 ### Macro & literals
 
 ```bash
