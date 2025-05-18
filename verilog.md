@@ -377,6 +377,29 @@ end
 * *There is also a similar **casex** that treats both ``x`` and ``z`` as don't-care.*
 * *The digit ``?`` is a synonym for ``z``. so ``2'bz0`` is the same as ``2'b?0``*
 
+#### Generate block
+
+* Evalué à la compilation contrairement à une boucle dans le block always.
+
+```verilog
+module top_module( 
+    input [99:0] a, b,
+    input cin,
+    output [99:0] cout,
+    output [99:0] sum
+);
+    genvar i;
+    
+    generate
+        for(i=0;i < $bits(sum);i++) begin : my_adder
+            adder add(a[i], b[i], (i == 0 ? cin : cout[i-1]), cout[i], sum[i]);
+        end
+
+    endgenerate
+
+endmodule
+```
+
 ### Macro & literals
 
 ```bash
