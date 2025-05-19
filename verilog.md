@@ -467,7 +467,9 @@ end
 * **Addition** de 2 bits avec une retenue en entrée : ``sum = a ^ b ^ Cin``
 * **Retenue** suite à une addition de 2 bits : ``Cout = (a & b) | (Cin & (a | b))``
 * Desing en *pipeline* pour augmenter la fréquence
-
+* Detecter changement d'état (passage de **0 à 1**) : ``state & ~previous_state``.
+* Detecter changement d'état (passage de **1 à 0**) : ``~state & previous_state``.
+  
 ## Forme canonique fonction booléenne
 
 ```bash
