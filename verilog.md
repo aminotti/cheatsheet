@@ -469,6 +469,12 @@ end
 * Desing en *pipeline* pour augmenter la fréquence
 * Detecter changement d'état (passage de **0 à 1**) : ``state & ~previous_state``.
 * Detecter changement d'état (passage de **1 à 0**) : ``~state & previous_state``.
+
+## Signed number
+
+* Complément à 2 : inversion des bites et add 1
+* nombre négatif msb à 1 et positif à 0
+* Lorsqu'on augmente le nombre de bits d'un nombre signé, on ajoute des 1 devant pour les nombres négatif et des 0 pour les nombre positifs (ex -5 sur 4 bits : 1011, sur 8 bits : 11111011)
   
 ## Forme canonique fonction booléenne
 
