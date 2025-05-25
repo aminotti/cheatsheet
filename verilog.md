@@ -472,9 +472,10 @@ end
 
 ## Signed number
 
-* Complément à 2 : inversion des bites et add 1
+* On prend le nombre postif et on applique le complément à 2 : inversion des bites et add 1 (-5 sur 4 bits : 0101 => 1010 => 1011).
 * nombre négatif msb à 1 et positif à 0
 * Lorsqu'on augmente le nombre de bits d'un nombre signé, on ajoute des 1 devant pour les nombres négatif et des 0 pour les nombre positifs (ex -5 sur 4 bits : 1011, sur 8 bits : 11111011)
+* Pour connaitre la valeur d'un nombre signé : si commence pas 1 on sais que c'est négatif, et on applique le complément à 2 (1011 => négatif => 0100 => 0101 => -5)
   
 ## Forme canonique fonction booléenne
 
