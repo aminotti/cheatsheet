@@ -509,4 +509,6 @@ abc | z
 
 ### Binary-Coded Decimal (BCD)
 
-Consiste à séparer les unité, dizaine, centaines... d'un nombre décimal et a réprésenter chaque chiffre en binaire sur 4 bits. Par exemple ``59`` (8'b00111011) => ``4'b0101`` (5) et ``4'b1001`` (9).
+* Consiste à séparer les unité, dizaine, centaines... d'un nombre décimal et a réprésenter chaque chiffre en binaire sur 4 bits. Par exemple ``59`` (8'b00111011) => ``4'b0101`` (5) et ``4'b1001`` (9).
+* Packed BCD is a type of Binary Coded Decimal where two decimal digits are stored in one byte (8 bits).  93 => ``10010011``
+* Unpacked BCD stores each decimal digit in a separate byte. Each byte contains one decimal digit, with the 4-bit nibble representing the decimal digit and the other 4 bits are unused or set to 0. 93 => ``00001001 00000011``
