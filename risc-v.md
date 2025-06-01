@@ -255,4 +255,30 @@ ld x4, 6(x1)   # ❌ Misaligned! 0x1006 is not a multiple of 8 (on RV64)
 * not : ``xori rd, rs, -1`` => -1 vaut 0xFFFFFFFF
 * subi : ``addi rd, rs, -imm`` => soustraction est une addition d'un nombre négatif
 
+#### Using lui
+
+```asm
+# Add 32 bits immediate
+lui x5, 0x12345    # x5 = 0x12345000
+addi x5, x5, 0x678 # x5 = 0x12345678
+
+# Set global pointer for data access
+lui gp, 0x80010
+# Set stack pointer
+lui sp, 0x80020
+
+# Accès phériphérique map to adresse 0x40000000
+lui x6, 0x40000      # x6 = 0x40000000
+lw  x7, 0(x6)        # load word from [0x40000000] into x7
+
+# Suppose GPIO direction register is at 0x10010000, and you want to write 0xFFFF0000
+lui x10, 0x10010     # x10 = 0x10010000
+lui x11, 0xFFFF0     # x11 = 0xFFFF0000
+sw  x11, 0(x10)      # store x11 to [0x10010000]
+
+# This is how you jump to a fixed address, such as a bootloader or ISR.
+lui x1, 0x20000      # x1 = 0x20000000
+jalr x0, x1, 0       # jump to address in x1 (function call)
+```
+
 *Liste des instructions p. 90 de The RISC-V Instruction Set Manual Volume I*
