@@ -8,6 +8,17 @@
 sudo apt update
 sudo apt install iverilog gtkwave verilator
 ```
+### Setup pour boards FPGA
+
+```
+sudo apt install pipx
+pipx ensurepath
+
+pipx install apio
+apio --version
+apio install --all
+sudo usermod -a -G dialout $USER
+```
 ## Code
 
 * code ``multiplexer_2_1.v`` :
