@@ -153,7 +153,7 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 ### Registres temporaires (`t0 - t6`)
 
 * Utilisés pour **les calculs intermédiaires**.
-* **⚠️ Pas sauvegardés entre les appels de fonction** (ils peuvent être écrasés).
+* **⚠️ Pas sauvegardés entre les appels de fonction** => si une fonction veut réutiliser un registre ``t`` après un appel de fonction, elle doit sauvegarder avant appel et restorer apreè appel.
 
 ### Registres d'arguments (`a0 - a7`)
 
@@ -163,7 +163,7 @@ message: .string "Hello, Bare Metal RISC-V!\n"
 ### Registres sauvegardés (`s0 - s11`)
 
 * Conservent des valeurs importantes sur une longue durée.
-* **✅ Sauvegardés à travers les appels de fonction** (les fonctions doivent préserver leur contenu).
+* **✅ Sauvegardés à travers les appels de fonction** => une fonction qui modifie un registre ``s`` doit sauvegarder avant et restorer après usage.
 
 ### Registres spéciaux (`sp`, `ra`, `gp`, `tp`)
 
