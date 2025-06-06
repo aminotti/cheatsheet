@@ -11,7 +11,7 @@ sudo apt install iverilog gtkwave verilator
 ### Setup pour boards FPGA
 
 ```
-sudo apt install pipx
+sudo apt install pipx scons
 pipx ensurepath
 
 pipx install apio
@@ -19,6 +19,22 @@ apio --version
 apio install --all
 sudo usermod -a -G dialout $USER
 ```
+
+## Using apio for FPGA
+
+```bash
+# Initialisation du projet
+apio init --board icestick
+# Vérification du code verilog
+apio verify
+# Simulation
+apio sim
+# synthesis, placing & routing and create binary for the chip
+apio build
+# Envoi sur la mémoire flash de la board
+apio upload
+```
+
 ## Code
 
 * code ``multiplexer_2_1.v`` :
