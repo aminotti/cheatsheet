@@ -413,7 +413,8 @@ while expression {
   break;
 }
 
-let list = vec![1, 2, 3, 4, 5];
+let mut list = vec![1, 2, 3, 4, 5];
+// pop() remove from list
 while let Some(element) = list.pop() {
   println!("the value is: {element}");
 }
