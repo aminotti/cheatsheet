@@ -225,6 +225,10 @@ for i in v1.iter() {
   println!("{i}");
 }
 // Effectur un move (prend ownership)
+for i in v1 {
+  println!("{i}");
+}
+// Equivaut à
 for i in v1.into_iter() {
   println!("{i}");
 }
