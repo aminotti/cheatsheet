@@ -129,7 +129,7 @@ u8, u16, u32, u64, u128, usize
 98_222, 38_000_u16, 0xff, 0o77 (octal)
 0b1111_0000, b'A' (u8)
 // Floats
-float32, float64
+f32, f64
 // Floats literal
 0.01_f64, 1_000.000_1_f32
 // Caractère UTF8 sur 4 bytes
