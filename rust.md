@@ -298,7 +298,7 @@ enum Fruit {
     Apple,
     Banana,
 }
-let mut hm HashMap<Fruit, u32>;
+let mut hm : HashMap<Fruit, u32>;
 
 let mut s = HashMap::new();
 s.insert(String::from("Blue"), 10);
