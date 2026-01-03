@@ -36,6 +36,14 @@
 rustup update
 # Remove rust
 rustup self uninstall
+# Show toolchains and target
+rustup show
+# List toolchains
+rustup toolchain list
+# Set default toolchain
+rustup default <stable-x86_64-unknown-linux-gnu>
+# List rustup components
+rustup component list
 
 # Compile & run simple file
 rustc main.rs
