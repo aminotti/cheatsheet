@@ -216,7 +216,7 @@ match third {
   None => println!("404"),
 }
 
-// Iterating over the Values
+// Iterating over the Values (borrow)
 for i in &v1 {
   println!("{i}");
 }
@@ -233,7 +233,7 @@ for i in v1.into_iter() {
   println!("{i}");
 }
 
-// Modif element du vecteur
+// Modif element du vecteur (mutable borrow)
 for i in &mut v2 {
   *i += 50;
 }
