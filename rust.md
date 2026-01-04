@@ -171,7 +171,8 @@ let [a, _, c, d, _] = a;
 
 ### Slices
 
-* pointeur et longeur stoqués dans **stack**
+* Pointeur et longeur stoqués dans **stack**
+* A borrowed portion of contiguous data
 * Litteral string == string slice
 * String slice : core language
 
@@ -191,9 +192,18 @@ let s = "Hello, world!";
 // arg accept String ou string literal
 fun ma_fc(arg: &str) {}
 
-let a = [1, 2, 3, 4, 5];
-let slice : &[i32] = &a[1..3];
-assert_eq!(slice, &[2, 3]);
+let mut a = [1, 2, 3, 4, 5];
+let s1 : &[i32] = &a[1..3];
+let s2 = &mut a[1..3];
+s2[0] = 6;
+// s1 type &[i32] et i type &i32
+for i in s1 {
+  // add deference i
+  // donc 0 + &i32 équivaut à 0 + i32
+  t = 0 + i;
+}
+// i type i32 (pattern matching &i <=> &i32)
+for &i in s1 {}
 ```
 
 ### Vector
