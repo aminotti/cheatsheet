@@ -667,6 +667,16 @@ match dice_roll {
   _ => (), // Ne fait rien
 }
 
+// Using if and pipe
+let ok = match my_number {
+  3 | 5 | 7 => true,
+  n if n > 10 => true,
+  _ => false,
+};
+
+// macro : renvoi true si pattern match
+let positive = matches!(my_number, n if n <= 0);
+
 // Equivalant de match : if let
 let mut count = 0;
 match coin {
