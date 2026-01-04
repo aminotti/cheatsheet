@@ -812,6 +812,7 @@ println!("binary {:08b}",5);
 println!("octal {:o}, hexa {:x}",5, 5);
 println!("{:?}", ma_struct); // debug
 println!("{:#?}", ma_struct); // pretty debug
+println!("{:p}", &a); // adresse mémoire
 
 eprintln!("This is an error\n"); // stderr
 
