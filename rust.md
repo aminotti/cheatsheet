@@ -8,6 +8,7 @@
   * [String](#string)
   * [HashMap](#hashmap)
 * [Déclarations variable et constantes](#declarations-variable-et-constantes)
+* [Operateurs de comparaison](#operateurs-de-comparaison)
 * [Opérateurs binaires](#operateurs-binaires)
 * [Fonctions](#fonctions)
 * [Control Flow](#control-flow)
