@@ -376,6 +376,9 @@ Traits à implémenter sur type custom :
 * `>>` : `Shr`
 * `^`  : `BitXor`
 
+* ``<<`` : décale vers la gauche avec 0 à droite
+* ``>>`` : décale vers la droite avec 0 pour nombre non signé et 0 ou 1 pour nombres signés
+
 ```rust
 let (g, h) = (0x1, 0x2);
 
