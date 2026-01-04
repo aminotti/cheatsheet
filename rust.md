@@ -359,7 +359,21 @@ let r#match = "tennis"
 // Mutable reference with explicit lifetime
 &'a mut i32
 ```
+## Operateurs de comparaison
+
+Traits à implémenter sur type custom :
+* `==` et `!=` : `PartialEq`
+* `<`, `>`, `<=` et `>=`  : `partialOrd`
+
 ## Operateurs binaires
+
+Traits à implémenter sur type custom :
+* `!`  : `Not`
+* `&`  : `BitAnd`
+* `|`  : `BitOr`
+* `<<` : `Shl`
+* `>>` : `Shr`
+* `^`  : `BitXor`
 
 ```rust
 let (g, h) = (0x1, 0x2);
