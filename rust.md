@@ -217,6 +217,10 @@ let v2: &[i32] = &v1;
 let mut v2 = Vec::new();
 v2.push(5);
 
+// vecteurs always moved, never copied : v2 invalidé
+// array, enum, struct copy or move depends des types qu'ils contiennent
+let v3 = v2;
+
 // Acces par index
 /// Panic si pas de 3ème élément
 let third: &i32 = &v1[2];
@@ -262,7 +266,14 @@ for i in v2.iter_mut() {
 ```rust
 let mut s1 = String::new();
 let s2 = "initial contents".to_string();
+// Copy string literal from ROM to heap
 let s3 = String::from("initial contents");
+// Deep copy s3 tjs valid
+let s4 = s3.clone()
+// s5 take ownership
+// Shallow copy (data dans stack copier mais inchangé dans stack)
+// move, s4 invalidé car String implement pas trait Copy
+let s5 = s4
 
 // Updating a String
 let s = "Hell";
@@ -876,6 +887,7 @@ foo.into_bytes()	-> Vec<u8>
 String::from_utf8()	-> Option<String>
 // Clones a &str into a String
 let foo = "foo".to_owned();
+// Trait ToString implemented via trait Display
 let foo = "foo".to_string();
 ```
 
