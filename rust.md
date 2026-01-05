@@ -217,8 +217,12 @@ let v2: &[i32] = &v1;
 let mut v2 = Vec::new();
 v2.push(5);
 
+// Deep copy, pas de move
+let v2b = v2.clone();
+
 // vecteurs always moved, never copied : v2 invalidé
 // array, enum, struct copy or move depends des types qu'ils contiennent
+// slide copy aussi mais pas deep, pointe vers le meme tableau
 let v3 = v2;
 
 // Acces par index
@@ -262,6 +266,7 @@ for i in v2.iter_mut() {
 
 * standart library
 * wrapper de vecteur de bytes
+* Contient adress dans stack, longeur et capacité
 
 ```rust
 let mut s1 = String::new();
