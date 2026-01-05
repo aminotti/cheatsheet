@@ -265,6 +265,7 @@ for i in v2.iter_mut() {
 ### String
 
 * standart library
+* character encoder en UTF8 (1 à 4 bytes)
 * wrapper de vecteur de bytes
 * Contient adress dans stack, longeur et capacité
 
