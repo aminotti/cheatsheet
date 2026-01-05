@@ -499,13 +499,20 @@ let subject = AlwaysEqual;
 struct Color(i32, i32, i32);
 let (a, b, c) = Color(0, 0, 0)
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 struct User {
   active: bool,
   username: String,
+  email: String,
   age: u8,
   sign_in_count: u64,
 }
+
+let d1 = User::default();
+let d2 = User {
+  email: String::from("michel@domain.tld"),
+  ..Default::default()
+};
 
 impl User {
   fn new_user(username: String) -> Self {
@@ -514,6 +521,7 @@ impl User {
     Self {
       active,
       username,
+      email: "noreply@domain.tld"
       age: 19,
       sign_in_count: 1,
     }
