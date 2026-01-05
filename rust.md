@@ -220,9 +220,10 @@ v2.push(5);
 // Deep copy, pas de move
 let v2b = v2.clone();
 
-// vecteurs always moved, never copied : v2 invalidé
-// array, enum, struct copy or move depends des types qu'ils contiennent
+// array copy or move depends des types qu'ils contiennent
+// enum et struct copy avec #[derive(Copy, Clone)] si type qu'ils contiennent implémentent Copy
 // slide copy aussi mais pas deep, pointe vers le meme tableau
+// vecteurs always moved, never copied : v2 invalidé
 let v3 = v2;
 
 // Acces par index
@@ -875,6 +876,7 @@ println!("binary {:08b}",5);
 println!("octal {:o}, hexa {:x}",5, 5);
 println!("{:?}", ma_struct); // debug
 println!("{:#?}", ma_struct); // pretty debug
+println!("{:#X?}", ma_struct); // valeurs numérique en hexa
 println!("{:p}", &a); // adresse mémoire
 
 eprintln!("This is an error\n"); // stderr
