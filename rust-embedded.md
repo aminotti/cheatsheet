@@ -4,7 +4,27 @@
 
 ## Cross-compilation
 
+Minimum ``main.rs`` :
+```rust
+#![no_std]
+#![no_main]
+
+#[unsafe(no_mangle)]
+fn main() -> ! {
+    loop {}
+}
+
+#[panic_handler]
+fn panic(_info: &core::panic::PanicInfo) -> ! {
+    loop {}
+}
+```
+
 ```bash
+# installation des outils
+cargo install cargo-binutils
+rustup component add llvm-tools-preview
+
 # List available target for cross-compilation
 rustup target --list
 # Ajout d'un target
