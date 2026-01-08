@@ -1,6 +1,13 @@
 # Rust Embedded
 
 * [Cross-compilation](#cross-compilation)
+* [Startup code](#startup-code)
+
+## Startup code
+
+* Vector table
+* Reset handler
+* Exceptions handlers
 
 ## Cross-compilation
 
@@ -32,6 +39,10 @@ rustup target add thumbv7em-none-eabihf
 
 # Compilation
 cargo build --taget thumbv7em-none-eabihf
+# To run cargo build without --target :
+cat .cargo/config.toml 
+[build]
+target = "thumbv7em-none-eabihf"
 ```
 
 ## STM32F407VET6
