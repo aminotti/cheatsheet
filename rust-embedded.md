@@ -9,6 +9,13 @@
 * Reset handler
 * Exceptions handlers
 
+## Linker Script
+
+* attribut rwx aide linkier à placer automatiquement si pas defini dans sections.
+* Readonly data (``.rodata``) : constantes, global (==static) variable immutable et string litérale. Stoqué en ROM (flash)
+* Data initialisées (``.data``) : global (==static) variable mutable ou variable local (stack). Stoqué dans ROM (flash) et copiér dans RAM (sram) par le startup code pour pouvoir être modifié.
+* Data non initialisées (``.bss``) : variable statics mutables et non mutables. ROM stoque uniquement la taile de ``.bss`` et startup script initialise à 0 le ``.bss`` en RAM.
+
 ## Cross-compilation
 
 Minimum ``main.rs`` :
