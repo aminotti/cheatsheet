@@ -55,6 +55,8 @@ cargo new [--lib] projectName
 cargo init [--lib]
 # Build
 cargo build [--release]
+# Supprimer ce qui a été build
+cargo clean
 # Compile and run Cargo project
 cargo run [-- arg1 arg2  arg3]
 # Check compilation sans build (plus rapide)
