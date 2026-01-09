@@ -11,7 +11,13 @@
 
 ## Linker Script
 
-* attribut rwx aide linkier à placer automatiquement si pas defini dans sections.
+Le compiler transforme le code en fichiers objects contenant les differentes sections et l'editeur de lien (linker) regroupe ces sections dans un unique fichier elf
+
+1. Le linker va assigner les adresse des differentes sections dans le fichier elf en respectant le plan d'adressage défini dans le linker script
+2. l'outil de programmation va se servire des adresses de sections définies dans le fichier elf pour les positionner dans le microcontroller
+
+* attribut rwx aide linker à placer automatiquement si pas defini dans sections.
+* Instruction section ``.text``.
 * Readonly data (``.rodata``) : constantes, global (==static) variable immutable et string litérale. Stoqué en ROM (flash)
 * Data initialisées (``.data``) : global (==static) variable mutable ou variable local (stack). Stoqué dans ROM (flash) et copiér dans RAM (sram) par le startup code pour pouvoir être modifié.
 * Data non initialisées (``.bss``) : variable statics mutables et non mutables. ROM stoque uniquement la taile de ``.bss`` et startup script initialise à 0 le ``.bss`` en RAM.
