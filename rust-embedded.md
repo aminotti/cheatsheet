@@ -5,8 +5,8 @@
 * [Linker Script](#linker-script)
 
 ## Startup code
-
-* Vector table : création auto avec ``cargo install svd-vector-gen && svd-vector-gen``
+* En tout debut de la FLASH on a le pointeur de stack (32bits), puis juste après la table de vecteurs (offset 0x0000 0004)
+* Vector table : création auto avec ``cargo install svd-vector-gen && svd-vector-gen`` mais vérifier quand même avec le datasheet. Elle contient les adresses des fonctions à appeler lors d'exceptions, d'interuptions,...
 * Reset handler
 * Exceptions handlers
 
