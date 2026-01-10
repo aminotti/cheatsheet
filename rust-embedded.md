@@ -75,3 +75,4 @@ cargo readobj -- -all <executable>
 * Installer``STM32CubeCLT`` pour récupérer le fichier svd dans ``/opt/st/stm32cubeclt_1.20.0/STMicroelectronics_CMSIS_SVD/STM32F407.svd``
 * Foundation, Arm Cortex-M4, 100 pins LQFP, 512Ko flash, -40°C et +85°C => d'après [naming convention](https://www.digikey.com/en/maker/tutorials/2020/understanding-stm32-naming-conventions)
 * Arm Cortex-M4 with FPU => Armv7E-M => **thumbv7em-none-eabihf**
+* Little Endian : en mémoire le premier octet est le dernier et le dernier octet est le premier (ex pour une valeur sur 64bit, le 1 octet est le dernier et le 8eme octet est le premier)
