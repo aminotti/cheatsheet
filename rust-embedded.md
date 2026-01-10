@@ -10,7 +10,7 @@
 * Reset handler
 * Exceptions handlers
 
-``extern "C"`` : force l'usage de la convention C ABI d'appel de fonctions, qui permet à la fonction appelante et la fonction appelée de se mettre d'accord sur le passage des paramètres, la valeur de retour, setup de la stack frame,... Nécessaire car notre MCU est thumbv7em-none-**eabi**hf
+``extern "C"`` : force l'usage de la convention C ABI d'appel de fonctions, qui permet à la fonction appelante et la fonction appelée de se mettre d'accord sur le passage des paramètres, la valeur de retour, setup de la stack frame,... Nécessaire car notre MCU est un Cortex-M qui respoect l'ARM Embedded ABI qui est proche de la C ABI.
 
 ## Linker Script
 
