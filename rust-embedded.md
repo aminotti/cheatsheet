@@ -1,13 +1,16 @@
 # Rust Embedded
 
-* [Cross-compilation](#cross-compilation)
 * [Startup code](#startup-code)
+* [Cross-compilation](#cross-compilation)
+* [Linker Script](#linker-script)
 
 ## Startup code
 
-* Vector table
+* Vector table : création auto avec ``cargo install svd-vector-gen && svd-vector-gen``
 * Reset handler
 * Exceptions handlers
+
+``extern "C"`` : force l'usage de la convention C ABI d'appel de fonctions, qui permet à la fonction appelante et la fonction appelée de se mettre d'accord sur le passage des paramètres, la valeur de retour, setup de la stack frame,... Nécessaire car notre MCU est thumbv7em-none-**eabi**hf
 
 ## Linker Script
 
@@ -69,5 +72,6 @@ cargo readobj -- -all <executable>
 
 ## STM32F407VET6
 
+* Installer``STM32CubeCLT`` pour récupérer le fichier svd dans ``/opt/st/stm32cubeclt_1.20.0/STMicroelectronics_CMSIS_SVD/STM32F407.svd``
 * Foundation, Arm Cortex-M4, 100 pins LQFP, 512Ko flash, -40°C et +85°C => d'après [naming convention](https://www.digikey.com/en/maker/tutorials/2020/understanding-stm32-naming-conventions)
 * Arm Cortex-M4 with FPU => Armv7E-M => **thumbv7em-none-eabihf**
