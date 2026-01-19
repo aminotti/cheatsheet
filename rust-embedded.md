@@ -67,6 +67,14 @@ cargo objdump -- -h <executable>
 cargo readobj -- -x .data <executable>
 # Pour voir toutes les infos
 cargo readobj -- -all <executable>
+
+# Flasher le firmware avec SWD
+# Voir le MCU est supporté
+probe-rs chip list|grep "STM32F4"
+# Flash
+cargo flash --chip STM32F407VE [--release]
+# Debug
+probe-rs attach --chip STM32F407VE --connect-under-reset target/thumbv7em-none-eabihf/debug/<my_binary> 
 ```
 
 ## STM32F407VET6
