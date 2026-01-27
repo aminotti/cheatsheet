@@ -64,7 +64,7 @@ target = "thumbv7em-none-eabihf"
 # Check des adresse dans le elf
 cargo objdump -- -h <executable>
 # Dump d'une section
-cargo readobj -- -x .data <executable>
+cargo readobj -- -x .text <executable>
 # Pour voir toutes les infos
 cargo readobj -- -all <executable>
 
