@@ -12,6 +12,8 @@
 
 ``extern "C"`` : force l'usage de la convention C ABI d'appel de fonctions, qui permet à la fonction appelante et la fonction appelée de se mettre d'accord sur le passage des paramètres, la valeur de retour, setup de la stack frame,... Nécessaire car notre MCU est un Cortex-M qui respoect l'ARM Embedded ABI qui est proche de la C ABI.
 
+**TODO** : Expliquer ``volatile``
+
 ## Linker Script
 
 Le compiler transforme le code en fichiers objects contenant les differentes sections et l'editeur de lien (linker) regroupe ces sections dans un unique fichier elf
@@ -83,6 +85,10 @@ cargo flash --chip STM32F407VE [--release]
 # Debug
 probe-rs attach --chip STM32F407VE --connect-under-reset target/thumbv7em-none-eabihf/debug/<my_binary> 
 ```
+
+⚠️ Bit 0 d'une adresse mémoire à 1 signifie mode d'execution ``Thumb`` (tipique Cortex-M) donc l'adresse réél à le bit 0 à 0.
+
+⚠️ En little endian l'ordre des octet est inversé : ``0x00000220`` donne en vrai ``0x20020000``
 
 ## STM32F407VET6
 
