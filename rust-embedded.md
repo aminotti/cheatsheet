@@ -68,6 +68,13 @@ cargo readobj -- -x .text <executable>
 # Pour voir toutes les infos
 cargo readobj -- -all <executable>
 
+# Voir le code assembleur
+cargo objdump -- -d --start-address=0x080001a0 --stop-address=0x080001d0 <executable>
+cargo objdump -- -d --start-address=0x080001a0 <executable>
+cargo objdump -- -d <executable>
+# Idem avec -s pour valeurs brut en hexa
+cargo objdump -- -s <executable>
+
 # Flasher le firmware avec SWD
 # Voir le MCU est supporté
 probe-rs chip list|grep "STM32F4"
