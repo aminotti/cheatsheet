@@ -116,12 +116,20 @@ gdb_connection_string = "127.0.0.1:1337"
 # Add breakpoints
 (gdb) break reset_handler
 (gdb) break main
+(gdb) break src/main.rs:50
 
 # List breakpoints
 (gdb) info breakpoints
 
 # Remove breakpoint
 (gdb) delete 1
+
+# Affiche le code
+(gdb) list
+# Affiche le code courant
+(gdb) list .
+# backtrace
+(gdb) bt
 
 # run until next breakpoint
 (gdb) continue
@@ -131,6 +139,17 @@ gdb_connection_string = "127.0.0.1:1337"
 (gdb) step
 # run until function returns   
 (gdb) finish
+
+# Inspection des registres
+(gdb) info registers
+# Affiche un mot mémoire (w 32bits) à une adresse RAM
+(gdb) x/w 0x20000000
+# Affiche le contenue à chaque arrêt
+(gdb) display/w 0x20000000
+# Affiche une variable
+(gdb) print ma_var
+# Affiche variable en hexa
+(gdb) print /x ma_var
 ```
 
 ## STM32F407VET6
