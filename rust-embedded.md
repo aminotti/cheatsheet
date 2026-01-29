@@ -90,6 +90,49 @@ probe-rs attach --chip STM32F407VE --connect-under-reset target/thumbv7em-none-e
 
 ⚠️ En little endian l'ordre des octet est inversé : ``0x00000220`` donne en vrai ``0x20020000``
 
+## Debuggage
+
+1. Create ``Embed.toml`` in project folder
+
+```toml
+[default.general]
+chip = "STM32F407VE"
+
+[default.gdb]
+enabled = true
+gdb_connection_string = "127.0.0.1:1337"
+```
+
+2. run ``cargo embed``
+3. run ``arm-none-eabi-gdb target/thumbv7em-none-eabihf/debug/<executable>``
+
+### Utilisation de gdb
+
+```gdb
+# starting debug session
+(gdb) target remote 127.0.0.1:1337
+(gdb) monitor reset halt
+
+# Add breakpoints
+(gdb) break reset_handler
+(gdb) break main
+
+# List breakpoints
+(gdb) info breakpoints
+
+# Remove breakpoint
+(gdb) delete 1
+
+# run until next breakpoint
+(gdb) continue
+# step over (source-level)
+(gdb) next
+# step into      
+(gdb) step
+# run until function returns   
+(gdb) finish
+```
+
 ## STM32F407VET6
 
 * Installer``STM32CubeCLT`` pour récupérer le fichier svd dans ``/opt/st/stm32cubeclt_1.20.0/STMicroelectronics_CMSIS_SVD/STM32F407.svd``
