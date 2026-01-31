@@ -765,13 +765,13 @@ Definition
 
 ```rust
 // src/lib.rs
-mode my_module;
+mod my_module;
 
 
 // src/my_module.rs
 // src/my_module/mod.rs
 // mod.r : old style, deprecated
-mode sub_module;
+mod sub_module;
 // Code du module
 
 
@@ -784,7 +784,9 @@ Ou Definition inline
 
 ```rust
 // src/lib.rs
-mode my_module {
+mod my_module {
+  // Import tout ce qui est accessible dans mod parent
+  use super::*;
   pub mode sub_module {
     // Code submodule
   }
