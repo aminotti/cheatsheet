@@ -150,6 +150,8 @@ gdb_connection_string = "127.0.0.1:1337"
 (gdb) print ma_var
 # Affiche variable en hexa
 (gdb) print /x ma_var
+# Affiche variable en binaire
+(gdb) print /t ma_var
 ```
 
 ## STM32F407VET6
