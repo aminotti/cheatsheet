@@ -535,7 +535,7 @@ impl User {
   // self si on transforme en autre chose
   // et invalid l'original pour le caller
   fn majeur(&self) -> bool {
-    self.age => 18
+    self.age >= 18
   }
 }
 
