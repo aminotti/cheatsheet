@@ -66,6 +66,64 @@ fn main() {
     println!("{:?}", mon_serveur);
 }
 ```
+## Strategy Pattern
+
+```rust
+trait MethodePaiement {
+    fn payer(&self, montant: u32);
+}
+
+struct Paypal;
+struct CarteBancaire;
+struct Bitcoin;
+
+impl MethodePaiement for Paypal {
+    fn payer(&self, montant: u32) {
+        println!("Paiement de {}€ via PayPal (redirection...).", montant);
+    }
+}
+
+impl MethodePaiement for CarteBancaire {
+    fn payer(&self, montant: u32) {
+        println!("Paiement de {}€ par Carte. Transaction sécurisée.", montant);
+    }
+}
+
+struct Panier<T: MethodePaiement> {
+    montant: u32,
+    strategie: T,
+}
+
+impl<T: MethodePaiement> Panier<T> {
+    fn valider_achat(&self) {
+        self.strategie.payer(self.montant);
+    }
+}
+```
+
+```rust
+// Static dispatch 0 cost abstraction (Choix fait à la compilation)
+let panier = Panier { montant: 50, strategie: Paypal };
+panier.valider_achat();
+
+// Dynamic dispatch (Choix fait à l'execution)
+struct PanierDynamique {
+    montant: u32,
+    strategie: Box<dyn MethodePaiement>, // Choix fait à l'exécution
+}
+
+fn main() {
+    let choix_utilisateur = "bitcoin";
+    
+    let methode: Box<dyn MethodePaiement> = match choix_utilisateur {
+        "paypal" => Box::new(Paypal),
+        _ => Box::new(CarteBancaire),
+    };
+
+    let panier = PanierDynamique { montant: 100, strategie: methode };
+    panier.strategie.payer(panier.montant);
+}
+```
 
 ## Type state pattern
 
