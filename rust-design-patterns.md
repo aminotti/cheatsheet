@@ -7,6 +7,66 @@
 * [Le Newtype Pattern](#newtype-pattern)
 * [L'Extension via les Traits ("Extension Traits")](#)
 
+## Builder Pattern
+
+Comme Rust n'a pas d'arguments par défaut ni de surcharge de fonctions, le Builder permet de créer des objets complexes étape par étape de manière lisible.
+
+```rust
+#[derive(Debug)]
+struct Serveur {
+    host: String,
+    port: u16,
+    tls: bool,
+}
+
+struct ServeurBuilder {
+    host: String,
+    port: Option<u16>,
+    tls: Option<bool>,
+}
+
+impl ServeurBuilder {
+    // 1. On initialise le builder avec des valeurs par défaut ou minimales
+    fn new(host: &str) -> Self {
+        Self {
+            host: host.to_string(),
+            port: None,
+            tls: None,
+        }
+    }
+
+    // 2. Des méthodes pour configurer chaque champ (on retourne Self)
+    fn port(mut self, port: u16) -> Self {
+        self.port = Some(port);
+        self
+    }
+
+    fn avec_tls(mut self, active: bool) -> Self {
+        self.tls = Some(active);
+        self
+    }
+
+    // 3. La méthode finale qui assemble l'objet
+    fn build(self) -> Serveur {
+        Serveur {
+            host: self.host,
+            port: self.port.unwrap_or(80), // Valeur par défaut
+            tls: self.tls.unwrap_or(false),
+        }
+    }
+}
+
+fn main() {
+    // Utilisation fluide (Fluent Interface)
+    let mon_serveur = ServeurBuilder::new("localhost")
+        .port(443)
+        .avec_tls(true)
+        .build();
+
+    println!("{:?}", mon_serveur);
+}
+```
+
 ## Type state pattern
 
 *Pour utiliser les enum, il faut voir avec les const et types génériques : https://github.com/rust-lang/rust/issues/95174*
