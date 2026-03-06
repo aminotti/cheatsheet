@@ -102,11 +102,11 @@ impl<T: MethodePaiement> Panier<T> {
 ```
 
 ```rust
-// Static dispatch 0 cost abstraction (Choix fait à la compilation)
+// Static dispatch(Choix fait à la compilation) - 0 cost abstraction 
 let panier = Panier { montant: 50, strategie: Paypal };
 panier.valider_achat();
 
-// Dynamic dispatch (Choix fait à l'execution)
+// Dynamic dispatch (Choix fait à l'execution) - Trait Objects 
 struct PanierDynamique {
     montant: u32,
     strategie: Box<dyn MethodePaiement>, // Choix fait à l'exécution
