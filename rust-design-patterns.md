@@ -1,5 +1,12 @@
 # Rust Design patterns
 
+* [Le Pattern Builder (Constructeur)](#builder-pattern)
+* [Le Pattern Strategy (via les Traits)](#strategy-pattern)
+* [Le Pattern Typestate](#type-state-pattern)
+* [RAII (Resource Acquisition Is Initialization)](#raii)
+* [Le Newtype Pattern](#newtype-pattern)
+* [L'Extension via les Traits ("Extension Traits")](#)
+
 ## Type state pattern
 
 *Pour utiliser les enum, il faut voir avec les const et types génériques : https://github.com/rust-lang/rust/issues/95174*
