@@ -929,12 +929,12 @@ format!() -> String
 "lol".replace("lol", "foo") -> String
 "lol".replacen("l", "p", 2) -> String
 "lol".repeat(4) -> String
-.split(delim)/.split_whitespace()
+.split(delim) /.split_whitespace()
 .join(delim)	// Join slices of strings
-.starts_with()/.ends_with()
+.starts_with() /.ends_with()
 .contains()
-.len()	Byte length (not char count!)
-.is_empty()	Check if empty
+.len()	// Byte length (not char count!)
+.is_empty()	// Check if empty
 // Slice safely (&s[start..end])
 s.get(start..end) -> Option<&str>
 ```
