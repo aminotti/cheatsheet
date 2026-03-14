@@ -17,6 +17,7 @@
 * [Closures](#closures)
 * [Iterators](#iterators)
 * [Match](#match)
+* [Patterns](#patterns)
 * [Modules](#modules)
 * [Generic types](#generic-types)
 * [Traits](#traits)
@@ -739,6 +740,18 @@ if let Coin::Quarter(s) = coin {
 } else {
   count += 1;
 }
+```
+## Patterns
+
+```rust
+// Bind the whole struct to 'u', but only if 'admin' is true
+u @ User { admin: true, .. }
+// args vaut les valeur restante du slice si la premiere valeur vaut "echo"
+["echo", args @ ..]
+// on récup premier et derniere valeur du tuple, on s'occupe des valeurs intermédiaires
+(first, .., last)
+// Si tuple comence par 5, all vaut le tuple entier
+all @ (5, _, _)
 ```
 
 ## Modules
