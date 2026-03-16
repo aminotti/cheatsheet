@@ -74,13 +74,42 @@ cargo install <packagename>
 ```
 ### Cargo.toml
 
-```bash
+```toml
 # Cargo.toml
 [profile.dev]
 opt-level = 0 #  min optimisation
 
 [profile.release]
 opt-level = 3 # max optimisation
+```
+
+### Features
+
+```rust
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialise)]
+pub struct User {
+    id: u32,
+    name: String
+}
+
+fn main() {
+    #[cfg_attr(feature = "serde")] // ligne suivante executée que si la featue serde est activée
+    let user : User = serde_json::from_str(&user_json).unwrap();
+}
+```
+
+```toml
+# cargo.toml
+[dependencies]
+serde = {version = "1.0", features = ["derive"], optional = true}
+serde_json = "1.0"
+
+[features]
+serde = ["dep:serde"]
+```
+
+```bash
+cargo run --features serde
 ```
 
 ### Workspace
