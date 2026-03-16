@@ -554,9 +554,11 @@ let u2 = User {
 ## Enum
 
 ```rust
+#[derive(default)]
 enum MyMsg {
   Quit,
   Move { x: i32, y: i32 },
+  #[default]  // default value de l'enum serat MyMsg::Write("")
   Write(String),
   ChangeColor(i32, i32, i32),
 }
