@@ -257,7 +257,7 @@ let v2b = v2.clone();
 
 // array copy or move depends des types qu'ils contiennent
 // enum et struct copy avec #[derive(Copy, Clone)] si type qu'ils contiennent implémentent Copy
-// slide copy aussi mais pas deep, pointe vers le meme tableau
+// slice copy aussi mais pas deep, pointe vers le meme tableau
 // vecteurs always moved, never copied : v2 invalidé
 let v3 = v2;
 
@@ -313,7 +313,7 @@ let s3 = String::from("initial contents");
 // Deep copy s3 tjs valid
 let s4 = s3.clone()
 // s5 take ownership
-// Shallow copy (data dans stack copier mais inchangé dans stack)
+// Shallow copy (data dans stack copier mais inchangé dans heap)
 // move, s4 invalidé car String implement pas trait Copy
 let s5 = s4
 
@@ -551,7 +551,7 @@ let d2 = User {
 };
 
 impl User {
-  fn new_user(username: String) -> Self {
+  fn new(username: String) -> Self {
     active: true;
 
     Self {
@@ -572,7 +572,7 @@ impl User {
   }
 }
 
-let u1 = User::new_user(String::from("joe"));
+let u1 = User::new(String::from("joe"));
 
 let u2 = User {
   email: String::from("martin@domain.tld"),
