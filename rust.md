@@ -173,10 +173,10 @@ u8, u16, u32, u64, u128, usize
 f32, f64
 // Floats literal
 0.01_f64, 1_000.000_1_f32
-// Caractère UTF8 sur 4 bytes
+// Caractère Unicode (4 bytes)
 char
 // char literal
-'e', '\n', '\u{1f600}'
+'e', '\n', '\u{1f600}', '❤️'
 // Boolean
 bool
 
