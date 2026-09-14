@@ -193,6 +193,9 @@ u64::MAX
 type Age = u8;
 
 // Tuples
+// empyt / unit
+// expression qui retourne pas de valeur
+let empty : () = (); 
 let tup: (i32, f64, u8) = (500, 6.4, 1);
 let (x, y, z) = tup;
 let x = tup.0;
@@ -204,6 +207,7 @@ let a = [3; 5];
 let first = a[0];
 let [a, _, c, d, _] = a;
 ```
+* Tuples et array copy si ce qu'ils contiennent implément trait copy
 
 ### Slices
 
