@@ -197,6 +197,7 @@ type Age = u8;
 // expression qui retourne pas de valeur
 let empty : () = (); 
 let tup: (i32, f64, u8) = (500, 6.4, 1);
+// destructuration
 let (x, y, z) = tup;
 let x = tup.0;
 
@@ -205,6 +206,7 @@ let a: [i32; 5] = [1, 2, 3, 4, 5];
 let a = [1, 2, 3, 4, 5];
 let a = [3; 5];
 let first = a[0];
+// destructuration
 let [a, _, c, d, _] = a;
 ```
 * Tuples et array copy si ce qu'ils contiennent implément trait copy
