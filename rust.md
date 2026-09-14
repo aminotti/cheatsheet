@@ -939,8 +939,8 @@ println!("{:p}", &a); // adresse mémoire
 eprintln!("This is an error\n"); // stderr
 
 format!("{}", var);
-
-dbg!(var)
+// Affiche un msg de debug et renvoi un resultat
+let resu = dbg!(4 + 5)
 
 panic!();
 ```
