@@ -940,7 +940,7 @@ eprintln!("This is an error\n"); // stderr
 
 format!("{}", var);
 
-dbg!()
+dbg!(var)
 
 panic!();
 ```
