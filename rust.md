@@ -583,6 +583,9 @@ impl User {
 
 let u1 = User::new(String::from("joe"));
 
+// User::majeur(&u1) équivaut à 
+u1.majeur();
+
 let u2 = User {
   email: String::from("martin@domain.tld"),
   ..u1 // u1 plus utilisable due to username
