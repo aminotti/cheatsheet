@@ -220,6 +220,8 @@ let [a, _, c, d, _] = a;
 
 ```rust
 let s = String::from("hello new world");
+// [ index inclue .. index exclue]
+// [ index inclue ..= index inclue]
 let hello : &str = &s[..5]; // hello
 let new : &str = &s[6..9]; // new
 let world : &str = &s[10..]; // world
