@@ -572,6 +572,7 @@ impl User {
 
   }
 
+  // &self shorthand for self: &Self
   // $mut self si on voulais modifié age
   // self si on transforme en autre chose
   // et invalid l'original pour le caller
