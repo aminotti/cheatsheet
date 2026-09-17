@@ -287,6 +287,10 @@ for i in &v1 {
 for i in v1.iter() {
   println!("{i}");
 }
+// Iterating over specifi range of values (borrow)
+for i in &v1[1..] {
+  println!("{i}");
+}
 // Effectur un move (prend ownership)
 for i in v1 {
   println!("{i}");
