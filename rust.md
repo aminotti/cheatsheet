@@ -1012,6 +1012,7 @@ s.get(start..end) -> Option<&str>
 ```rust
 // Tout ce bloc fonctionne aussi avec Option<T>
 Result<T, E>.unwrap_or_else(|e|);
+Result<T, E>.unwrap_or(default: <T>);
 Result<T, E>.unwrap(); // panic
 Result<T, E>.expect(""); // panic
 // ? sur types qui impl FromResidual
