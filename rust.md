@@ -7,6 +7,7 @@
   * [Vector](#vector)
   * [String](#string)
   * [HashMap](#hashmap)
+  * [HashSet](#hashset)
 * [Déclarations variable et constantes](#declarations-variable-et-constantes)
 * [Operateurs de comparaison](#operateurs-de-comparaison)
 * [Opérateurs binaires](#operateurs-binaires)
@@ -396,6 +397,43 @@ s.entry(String::from("Blue")).or_insert(50);
 *s.entry(Fruit::Apple).or_insert(0) += 1;
 // Si la value implement trait Default
 s.entry("lol").or_default();
+```
+
+### HashSet
+
+Pour stocker des structures custom dans un HashSet, doit implémenter ``Eq``, ``PartialEq`` et ``Hash``.
+
+```rust
+use std::collections::HashSet;
+// 1. Ensemble vide (mutable pour pouvoir ajouter)
+let mut set: HashSet<i32> = HashSet::new();
+// 2. Avec pré-allocation si la taille estimée est connue
+let mut set: HashSet<i32> = HashSet::with_capacity(100);
+// 3. À partir d'un tableau ou d'un itérateur (Rust 2021)
+let set = HashSet::from([1, 2, 3, 4]);
+
+set.insert(valeur);
+set.contains(&valeur) // -> bool;
+set.remove(&valeur);
+set.clear();
+set.len();
+set.is_empty();
+
+// Théorie des ensembles
+let a = HashSet::from([1, 2, 3]);
+let b = HashSet::from([3, 4, 5]);
+// ref en param retournent des itérateurs
+a.intersection(&b).cloned().collect(); // -> {3}
+a.union(&b).cloned().collect(); // -> {1, 2, 3, 4, 5}
+a.difference(&b).cloned().collect(); // -> {1, 2}
+// présents dans l'un ou l'autre, pas les deux
+a.symmetric_difference(&b).cloned().collect(); // -> {1, 2, 4, 5}
+
+// Inclusions & Disjonction (bool)
+let sub = HashSet::from([1, 2]);
+sub.is_subset(&a); // true  (sub est inclus dans a)
+a.is_superset(&sub); // true  (a contient sub)
+a.is_disjoint(&b); // false (car ils partagent '3')
 ```
 
 ## Declarations variable et constantes
