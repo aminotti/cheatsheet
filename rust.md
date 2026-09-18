@@ -332,6 +332,7 @@ s1.push_str(s);
 s1.push('o');
 
 // s1 is moved and can no longer be used
+// car + => add(self, s $str) -> String
 let s = s1 + "-" + &s2 + "-" + &s3;
 
 // Iteration sur une chaîne
