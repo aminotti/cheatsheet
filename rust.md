@@ -842,7 +842,7 @@ all @ (5, _, _)
 
 ## Modules
 
-* Workspace > Packages (Cargo.toml) > crates (bin/<crate_name>.rs ou main.rs ou 0-1 lib.rs) > **modules**
+* Workspace > Packages (``Cargo.toml``) > crates (``bin/<crate_name>.rs`` ou ``main.rs`` ou ``lib.rs``) > **modules**
 * *1 crate min. par package : 1 lib crate max et n bin crates max*
 
 Import
