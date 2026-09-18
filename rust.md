@@ -401,7 +401,8 @@ s.entry("lol").or_default();
 
 ### HashSet
 
-Pour stocker des structures custom dans un HashSet, doit implémenter ``Eq``, ``PartialEq`` et ``Hash``.
+* Pour stocker des structures custom dans un HashSet, doit implémenter ``Eq``, ``PartialEq`` et ``Hash``.
+* ordre pas garantie
 
 ```rust
 use std::collections::HashSet;
@@ -412,22 +413,25 @@ let mut set: HashSet<i32> = HashSet::with_capacity(100);
 // 3. À partir d'un tableau ou d'un itérateur (Rust 2021)
 let set = HashSet::from([1, 2, 3, 4]);
 
+set.extend([3, 4, 5, 6, 7]);
 set.insert(valeur);
 set.contains(&valeur) // -> bool;
 set.remove(&valeur);
 set.clear();
 set.len();
 set.is_empty();
+// drain() vide le hashset
+set.drain().collect<Vec<i32>>() // -> Vec<i32>
 
 // Théorie des ensembles
 let a = HashSet::from([1, 2, 3]);
 let b = HashSet::from([3, 4, 5]);
 // ref en param retournent des itérateurs
-a.intersection(&b).cloned().collect(); // -> {3}
-a.union(&b).cloned().collect(); // -> {1, 2, 3, 4, 5}
-a.difference(&b).cloned().collect(); // -> {1, 2}
+a.intersection(&b).collect(); // -> {3}
+a.union(&b).collect(); // -> {1, 2, 3, 4, 5}
+a.difference(&b).collect(); // -> {1, 2}
 // présents dans l'un ou l'autre, pas les deux
-a.symmetric_difference(&b).cloned().collect(); // -> {1, 2, 4, 5}
+a.symmetric_difference(&b).collect(); // -> {1, 2, 4, 5}
 
 // Inclusions & Disjonction (bool)
 let sub = HashSet::from([1, 2]);
