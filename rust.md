@@ -945,10 +945,16 @@ println!("{:p}", &a); // adresse mémoire
 eprintln!("This is an error\n"); // stderr
 
 format!("{}", var);
+
 // Affiche un msg de debug et renvoi un resultat
 let resu = dbg!(4 + 5)
+dbg!(ma_var);
 
 panic!();
+// Panic pour implémentation future
+todo!("");
+// Panic avec implémentaion future potentielle
+unimplemented!("");
 ```
 
 ### Chaine de Charactères
