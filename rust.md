@@ -892,7 +892,7 @@ Ou Definition inline
 mod my_module {
   // Import tout ce qui est accessible dans mod parent
   use super::*;
-  pub mode sub_module {
+  pub mod sub_module {
     // Code submodule
   }
   // Code du module
