@@ -926,6 +926,16 @@ impl Pt<f32, f32> {
 ## Traits
 
 ```rust
+struct Pair<T> {
+  x: T,
+  y: T,
+}
+impl<T: Display + PartialOrd> Pair<T> {
+ fn new(x: T, Y: T) -> Self {
+  Self{x, y}
+ }
+}
+
 pub trait Summary {
  fn summarize_author(&self) -> String;
  // Default implementation
